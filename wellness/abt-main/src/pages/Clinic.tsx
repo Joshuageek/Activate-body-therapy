@@ -242,8 +242,8 @@ const Clinic = () => {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
 
                 {/* Content */}
-                <div className="relative z-10 p-8 transition-transform duration-500 1group-hover:-translate-y-1">
-                  <div className="w-16 h-16  flex items-center justify-auto mb-6  transition-colors">
+                <div className="relative z-10 p-8 transition-transform duration-500 group-hover:-translate-y-1 flex flex-col h-full">
+                  <div className="w-16 h-16 flex items-center justify-auto mb-6 transition-colors">
                     {/* Placeholder for icons - can be replaced with actual icons */}
                   </div>
 
@@ -251,12 +251,15 @@ const Clinic = () => {
                     {service.title}
                   </h3>
 
-                   {/* Small spacer to push button down slightly */}
-                    <div className="h-[300px]" />
+                  <p className="text-white/80 text-sm mb-6 line-clamp-3">
+                    {service.description}
+                  </p>
 
-                  <Button asChild className="w-30 h-12 bg-usawa-green text-white ">
-                  <Link to="/services">Learn More</Link>
-                </Button>
+                  <div className="mt-auto">
+                    <Button asChild className="w-full h-12 bg-usawa-green text-white">
+                      <Link to="/services">Learn More</Link>
+                    </Button>
+                  </div>
                 </div>
               </motion.div>
             ))}

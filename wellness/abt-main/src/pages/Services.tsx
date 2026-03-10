@@ -554,98 +554,34 @@ const services = [
 
 {
   id: 39,
-  title: "Pure Hydration IV",
-  description:
-    "Replenishes fluids, supports cellular function, and restores energy levels for overall wellbeing and recovery.",
+  title: "IV Therapy",
+  description: "IV therapy delivers essential vitamins, minerals, and hydration directly into the bloodstream, allowing for faster absorption and recovery. This treatment supports energy restoration, immune function, hydration, and overall performance, helping the body recover and function at its best.",
   duration: "60 min",
-  price: "UGX 450,000",
+  price: "Starts from UGX 450,000",
   section: "Health Club Services",
-  benefits: ["Hydration", "Energy restoration", "Cellular support"],
+  benefits: ["Boosts energy", "Improves immunity", "Enhances hydration", "Speeds up recovery"],
   image: hydration,
+  treatments: [
+    { title: "Pure Hydration IV", price: "UGX 450,000", description: "Replenishes fluids, supports cellular function, and restores energy levels" },
+    { title: "Immunity IV", price: "UGX 450,000", description: "Strengthens immune system using Vitamin C, B-complex, B12, and magnesium" },
+    { title: "Well-Being IV", price: "UGX 700,000", description: "Comprehensive wellness infusion supporting brain function and metabolism" },
+    { title: "Glow IV", price: "UGX 600,000", description: "Enhances skin brightness and detoxification using glutathione and antioxidants" },
+    { title: "Hangover IV", price: "UGX 750,000", description: "Rapid recovery treatment that combats dehydration and fatigue" },
+    { title: "Slimming Drip", price: "UGX 700,000", description: "Supports fat metabolism and weight management" },
+    { title: "Beauty Regimen Cocktail", price: "UGX 850,000", description: "Premium anti-aging infusion with skin-boosting nutrients" },
+    { title: "Just For You (Customized IV)", price: "UGX 600,000", description: "Fully personalized IV therapy designed by medical professionals" },
+    { title: "Vitamins & Nutrients Boosters", price: "Consultation Based", description: "B12, Magnesium, Ginkgo boosters" }
+  ],
 },
-{
-  id: 40,
-  title: "Immunity IV",
-  description:
-    "Strengthens the body’s immune system using Vitamin C, B-complex, B12, and magnesium to protect against illness and fatigue.",
-  duration: "60 min",
-  price: "UGX 450,000",
-  section: "Health Club Services",
-  benefits: ["Boosts immunity", "Reduces fatigue", "Improves resilience"],
-  image: immunity,
-},
-{
-  id: 41,
-  title: "Well-Being IV",
-  description:
-    "A comprehensive wellness infusion supporting brain function, metabolism, energy production, and overall vitality.",
-  duration: "60 min",
-  price: "UGX 700,000",
-  section: "Health Club Services",
-  benefits: ["Boosts vitality", "Improves metabolism", "Enhances brain function"],
-  image: wellness,
-},
-
-  { id: 42, 
-    title: "Glow IV", 
-    description: "A luxury infusion designed to enhance skin brightness and detoxification using glutathione and antioxidants.", 
-    duration: "60 min", 
-    price: "UGX 600,000", 
-    section: "Health Club Services", 
-    benefits: [], 
-    image: glow,
-  },
-  { id: 43, 
-    title: "Hangover IV", 
-    description: "A rapid recovery treatment that combats dehydration, fatigue, and toxin buildup for quick revitalization.", 
-    duration: "60 min", 
-    price: "UGX 750,000", 
-    section: "Health Club Services", 
-    benefits: [], 
-    image: hangover,
-  },
-  { id: 44, 
-    title: "Slimming Drip", 
-    description: "Supports fat metabolism, energy optimization, and weight management as part of a wellness-focused lifestyle.", 
-    duration: "60 min", 
-    price: "UGX 700,000", 
-    section: "Health Club Services", 
-    benefits: [], 
-    image: slimming, 
-  },
-  { id: 45, 
-    title: "Beauty Regimen Cocktail", 
-    description: "A premium anti-aging infusion combining skin-boosting nutrients to support radiance, energy, and total rejuvenation.", 
-    duration: "60 min", 
-    price: "UGX 850,000", 
-    section: "Health Club Services", 
-    benefits: [], 
-    image: beautycocktail, 
-  },
-  { id: 46, 
-    title: "Just For You (Customized IV)", 
-    description: "A fully personalized IV therapy designed by medical professionals to meet individual health, beauty, or wellness goals.", 
-    duration: "60 min", 
-    price: "UGX 600,000", 
-    section: "Health Club Services", 
-    benefits: [], 
-    image: customized,
-  },
-  { id: 47, 
-    title: "Vitamins & Nutrients Boosters", 
-    description: "B12, Magnesium, Ginkgo boosters.", 
-    duration: "60 min", 
-    price: "UGX ", 
-    section: "Health Club Services", 
-    benefits: [], 
-    image: nutrients,
-  },
 ];
 
 const Services = () => {
-  const [openTreatments, setOpenTreatments] = useState(false);
+  const [openNailTreatments, setOpenNailTreatments] = useState(false);
+  const [openWaxingTreatments, setOpenWaxingTreatments] = useState(false);
+  const [openIvTreatments, setOpenIvTreatments] = useState(false);
   const nailService = services.find((s) => s.id === 37);
   const waxingService = services.find((s) => s.id === 38);
+  const ivService = services.find((s) => s.id === 39);
 
   return (
     <Layout>
@@ -768,10 +704,28 @@ const Services = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-4 mb-6">
-                 {(service.id === 37 || service.id === 38) &&(
+                 {service.id === 37 && (
                   <Button
                     variant="hero"
-                    onClick={() => setOpenTreatments(true)}
+                    onClick={() => setOpenNailTreatments(true)}
+                  >
+                    View Treatments
+                    <ArrowRight size={16} />
+                  </Button>
+                )}
+                {service.id === 38 && (
+                  <Button
+                    variant="hero"
+                    onClick={() => setOpenWaxingTreatments(true)}
+                  >
+                    View Treatments
+                    <ArrowRight size={16} />
+                  </Button>
+                )}
+                {service.id === 39 && (
+                  <Button
+                    variant="hero"
+                    onClick={() => setOpenIvTreatments(true)}
                   >
                     View Treatments
                     <ArrowRight size={16} />
@@ -822,13 +776,13 @@ const Services = () => {
       </section>
 
       {/* Modal Content */}
-     {openTreatments && nailService && (
+     {openNailTreatments && nailService && (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
     <div className="bg-white w-full max-w-md rounded-2xl p-6 relative animate-fade-in">
 
       {/* Close */}
       <button
-        onClick={() => setOpenTreatments(false)}
+        onClick={() => setOpenNailTreatments(false)}
         className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
       >
         ✕
@@ -863,7 +817,7 @@ const Services = () => {
 
       {/* Actions */}
       <div className="flex justify-end gap-3">
-        <Button variant="outline" onClick={() => setOpenTreatments(false)}>
+        <Button variant="outline" onClick={() => setOpenNailTreatments(false)}>
           Close
         </Button>
         <Button asChild variant="hero">
@@ -878,13 +832,76 @@ const Services = () => {
   </div>
 )}
 {/* Modal Content */}
-     {openTreatments && waxingService && (
+     {openIvTreatments && ivService && (
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
   <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-2xl p-6 relative animate-fade-in flex flex-col">
 
       {/* Close */}
       <button
-        onClick={() => setOpenTreatments(false)}
+        onClick={() => setOpenIvTreatments(false)}
+        className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
+      >
+        ✕
+      </button>
+
+      {/* Title */}
+      <h3 className="text-2xl font-serif font-bold mb-2">
+        {ivService.title}
+      </h3>
+
+      {/* Description */}
+      <p className="text-sm text-muted-foreground mb-6">
+        {ivService.description}
+      </p>
+
+      {/* Treatments */}
+        <div className="grid grid-cols-1 gap-3 mb-6 overflow-y-auto pr-2"
+            style={{ maxHeight: "45vh" }}>
+          {ivService.treatments.map((item) => (
+            <div
+              key={item.title}
+              className="p-4 bg-muted rounded-xl hover:bg-muted/70 transition"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-medium text-foreground">
+                  {item.title}
+                </span>
+                <span className="font-semibold text-warm-gray-700">
+                  {item.price}
+                </span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+
+      {/* Actions */}
+      <div className="flex justify-end gap-3">
+        <Button variant="outline" onClick={() => setOpenIvTreatments(false)}>
+          Close
+        </Button>
+        <Button asChild variant="hero">
+          <Link to="/contact">
+            Book Now
+            <ArrowRight size={16} />
+          </Link>
+        </Button>
+      </div>
+
+    </div>
+  </div>
+)}
+{/* Modal Content */}
+     {openWaxingTreatments && waxingService && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+  <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-2xl p-6 relative animate-fade-in flex flex-col">
+
+      {/* Close */}
+      <button
+        onClick={() => setOpenWaxingTreatments(false)}
         className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
       >
         ✕
@@ -921,7 +938,7 @@ const Services = () => {
 
       {/* Actions */}
       <div className="flex justify-end gap-3">
-        <Button variant="outline" onClick={() => setOpenTreatments(false)}>
+        <Button variant="outline" onClick={() => setOpenWaxingTreatments(false)}>
           Close
         </Button>
         <Button asChild variant="hero">
