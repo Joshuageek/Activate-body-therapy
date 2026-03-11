@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Become from "@/components/ui/BecomeAMember";
+import ChatWidget from "@/components/chat/ChatWidget";
 
 interface LayoutProps {
   children: ReactNode;
@@ -20,6 +21,9 @@ const Layout = ({ children }: LayoutProps) => {
 
       {/* GLOBAL FLOATING BUTTON */}
       <Become />
+      
+      {/* AI Chat Widget */}
+      <ChatWidget />
     </div>
   );
 };
