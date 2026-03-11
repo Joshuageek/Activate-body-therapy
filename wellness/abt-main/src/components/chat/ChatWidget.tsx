@@ -7,6 +7,7 @@ const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 interface Message {
   role: "user" | "assistant";
   content: string;
+  timestamp?: number;
 }
 
 const WELCOME_MESSAGE: Message = {
@@ -75,12 +76,26 @@ export default function ChatWidget() {
     const trimmed = input.trim();
     if (!trimmed || isLoading) return;
 
+    // Simple rate limiting - prevent rapid requests
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1];
+      const timeSinceLastMessage = Date.now() - (lastMessage.timestamp || 0);
+      if (timeSinceLastMessage < 2000) { // 2 second cooldown
+        console.log('Please wait a moment before sending another message...');
+        return;
+      }
+    }
+
     // Debug: Check if API key is available
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
     console.log('API Key available:', !!apiKey);
     console.log('API Key length:', apiKey?.length || 0);
 
-    const userMessage: Message = { role: "user", content: trimmed };
+    const userMessage: Message = { 
+      role: "user", 
+      content: trimmed,
+      timestamp: Date.now()
+    };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
     setInput("");
