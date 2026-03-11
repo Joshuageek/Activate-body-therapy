@@ -90,8 +90,14 @@ export default function ChatWidget() {
 
     try {
       const model = genAI.getGenerativeModel({
-        model: "gemini-1.5-flash",
+        model: "gemini-1.5-flash-latest", // Try the latest version
         systemInstruction: SYSTEM_INSTRUCTION,
+        generationConfig: {
+          temperature: 0.7,
+          topK: 40,
+          topP: 0.95,
+          maxOutputTokens: 1024,
+        },
       });
 
       const history = newMessages.slice(1, -1).map((m) => ({
@@ -100,6 +106,7 @@ export default function ChatWidget() {
       }));
 
       const chat = model.startChat({ history });
+      console.log('Sending message to Gemini:', trimmed);
       const result = await chat.sendMessageStream(trimmed);
 
       let fullResponse = "";
