@@ -90,7 +90,7 @@ export default function ChatWidget() {
 
     try {
       const model = genAI.getGenerativeModel({
-        model: "gemini-1.5-flash", // Use the correct model name for v1beta API
+        model: "gemini-2.0-flash", // Try the newer 2.0 model
       });
 
       const history = newMessages.slice(1, -1).map((m) => ({
