@@ -1,8 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { SITE_CONTENT } from "../../siteContent";
-
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
 interface Message {
   role: "user" | "assistant";
@@ -59,8 +56,8 @@ export default function ChatWidget() {
     if (!trimmed || isLoading) return;
 
     // Debug: Check if API key is available
-    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-    console.log('API Key available:', !!apiKey);
+    const apiKey = import.meta.env.VITE_GROQ_API_KEY;
+    console.log('Groq API Key available:', !!apiKey);
     console.log('API Key length:', apiKey?.length || 0);
 
     const userMessage: Message = { 
@@ -76,36 +73,70 @@ export default function ChatWidget() {
     setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
 
     try {
-      const model = genAI.getGenerativeModel({
-        model: "gemini-2.0-flash-lite", // Use lite model for better context handling
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "llama-3.1-8b-instant",
+          messages: [
+            { role: "system", content: SYSTEM_INSTRUCTION },
+            ...newMessages.slice(1).map((m) => ({
+              role: m.role === "assistant" ? "assistant" : "user",
+              content: m.content,
+            })),
+            { role: "user", content: trimmed },
+          ],
+          stream: true,
+        }),
       });
 
-      const history = newMessages.slice(1, -1).map((m) => ({
-        role: m.role === "assistant" ? "model" : "user",
-        parts: [{ text: m.content }],
-      }));
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-      const chat = model.startChat({ history });
-      console.log('Sending message to Gemini:', trimmed);
-      const result = await chat.sendMessageStream(SYSTEM_INSTRUCTION + "\n\n" + trimmed);
-
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
       let fullResponse = "";
-      for await (const chunk of result.stream) {
-        const text = chunk.text();
-        if (text) {
-          fullResponse += text;
-          setMessages((prev) => {
-            const updated = [...prev];
-            updated[updated.length - 1] = {
-              role: "assistant",
-              content: fullResponse,
-            };
-            return updated;
-          });
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value);
+          const lines = chunk.split('\n');
+
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const data = line.slice(6);
+              if (data === '[DONE]') continue;
+
+              try {
+                const parsed = JSON.parse(data);
+                const content = parsed.choices[0]?.delta?.content;
+                if (content) {
+                  fullResponse += content;
+                  setMessages((prev) => {
+                    const updated = [...prev];
+                    updated[updated.length - 1] = {
+                      role: "assistant",
+                      content: fullResponse,
+                    };
+                    return updated;
+                  });
+                }
+              } catch (e) {
+                // Skip invalid JSON
+              }
+            }
+          }
         }
       }
     } catch (error) {
-      console.error("Gemini error:", error);
+      console.error("Groq error:", error);
       setMessages((prev) => {
         const updated = [...prev];
         updated[updated.length - 1] = {
