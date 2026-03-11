@@ -80,8 +80,15 @@ export default function ChatWidget() {
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1];
       const timeSinceLastMessage = Date.now() - (lastMessage.timestamp || 0);
-      if (timeSinceLastMessage < 2000) { // 2 second cooldown
+      if (timeSinceLastMessage < 500) { // 0.5 second cooldown
         console.log('Please wait a moment before sending another message...');
+        setMessages((prev) => [...prev, { 
+          role: "assistant", 
+          content: "⏳ Please wait a moment before sending another message..." 
+        }]);
+        setTimeout(() => {
+          setMessages((prev) => prev.slice(0, -1));
+        }, 2000);
         return;
       }
     }
