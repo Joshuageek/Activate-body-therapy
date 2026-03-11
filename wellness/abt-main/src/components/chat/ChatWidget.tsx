@@ -191,12 +191,12 @@ export default function ChatWidget() {
         .abt-widget * { box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
         .abt-bubble {
           position: fixed; bottom: 90px; right: 28px; width: 58px; height: 58px;
-          border-radius: 50%; background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+          border-radius: 50%; background: hsl(177, 49%, 50%);
           border: none; cursor: pointer; display: flex; align-items: center;
-          justify-content: center; box-shadow: 0 4px 24px rgba(34,197,94,0.35);
+          justify-content: center; box-shadow: 0 4px 24px hsla(177, 49%, 50%, 0.35);
           transition: transform 0.2s ease, box-shadow 0.2s ease; z-index: 9999;
         }
-        .abt-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 30px rgba(34,197,94,0.45); }
+        .abt-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 30px hsla(177, 49%, 50%, 0.45); }
         .abt-bubble svg { width: 26px; height: 26px; color: #fff; }
         .abt-window {
           position: fixed; bottom: 100px; right: 28px; width: 370px; height: 560px;
@@ -206,7 +206,7 @@ export default function ChatWidget() {
         }
         @keyframes abt-pop { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
         .abt-header {
-          background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+          background: hsl(177, 49%, 50%);
           padding: 18px 20px; display: flex; align-items: center; gap: 12px;
         }
         .abt-header-avatar {
@@ -244,7 +244,7 @@ export default function ChatWidget() {
         .abt-msg.assistant { align-self: flex-start; }
         .abt-msg-bubble { padding: 11px 14px; border-radius: 16px; font-size: 13.5px; line-height: 1.55; font-weight: 400; white-space: pre-wrap; }
         .abt-msg.user .abt-msg-bubble {
-          background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; border-bottom-right-radius: 4px;
+          background: hsl(177, 49%, 50%); color: #fff; border-bottom-right-radius: 4px;
         }
         .abt-msg.assistant .abt-msg-bubble {
           background: #fff; color: #2c2c2c; border: 1px solid #e8ede9;
@@ -260,30 +260,30 @@ export default function ChatWidget() {
           background: #f8faf8; border-bottom: 1px solid #e8ede9;
         }
         .abt-quick-action {
-          padding: 6px 10px; background: #fff; border: 1px solid #bbf7d0; border-radius: 12px;
-          font-size: 11px; color: #16a34a; cursor: pointer; transition: all 0.15s ease; font-weight: 400;
+          padding: 6px 10px; background: #fff; border: 1px solid hsla(177, 49%, 50%, 0.3); border-radius: 12px;
+          font-size: 11px; color: hsl(177, 49%, 50%); cursor: pointer; transition: all 0.15s ease; font-weight: 400;
         }
-        .abt-quick-action:hover { background: #22c55e; color: #fff; border-color: #22c55e; }
+        .abt-quick-action:hover { background: hsl(177, 49%, 50%); color: #fff; border-color: hsl(177, 49%, 50%); }
         .abt-footer { padding: 12px 14px 16px; background: #fff; border-top: 1px solid #eef1ee; }
         .abt-input-row {
           display: flex; align-items: center; gap: 8px; background: #f0fdf4;
-          border: 1.5px solid #bbf7d0; border-radius: 14px; padding: 9px 12px; transition: border-color 0.15s;
+          border: 1.5px solid hsla(177, 49%, 50%, 0.3); border-radius: 14px; padding: 9px 12px; transition: border-color 0.15s;
         }
-        .abt-input-row:focus-within { border-color: #22c55e; }
+        .abt-input-row:focus-within { border-color: hsl(177, 49%, 50%); }
         .abt-input {
           flex: 1; border: none; background: transparent; font-size: 13.5px;
           color: #2c2c2c; outline: none; font-family: 'DM Sans', sans-serif; font-weight: 400;
         }
-        .abt-input::placeholder { color: #86efac; }
+        .abt-input::placeholder { color: hsla(177, 49%, 50%, 0.6); }
         .abt-send {
-          background: none; border: none; cursor: pointer; color: #22c55e;
+          background: none; border: none; cursor: pointer; color: hsl(177, 49%, 50%);
           display: flex; align-items: center; padding: 2px; border-radius: 6px;
           transition: color 0.15s, transform 0.1s;
         }
-        .abt-send:hover:not(:disabled) { color: #16a34a; transform: scale(1.1); }
-        .abt-send:disabled { color: #bbf7d0; cursor: not-allowed; }
+        .abt-send:hover:not(:disabled) { color: hsl(177, 72%, 50%); transform: scale(1.1); }
+        .abt-send:disabled { color: hsla(177, 49%, 50%, 0.4); cursor: not-allowed; }
         .abt-send svg { width: 20px; height: 20px; }
-        .abt-footer-note { text-align: center; font-size: 10.5px; color: #86efac; margin-top: 7px; font-weight: 300; }
+        .abt-footer-note { text-align: center; font-size: 10.5px; color: hsla(177, 49%, 50%, 0.6); margin-top: 7px; font-weight: 300; }
         @media (max-width: 480px) {
           .abt-window { width: calc(100vw - 20px); right: 10px; bottom: 86px; height: 70vh; }
           .abt-bubble { bottom: 20px; right: 16px; }
