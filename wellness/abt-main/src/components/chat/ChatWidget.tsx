@@ -62,7 +62,7 @@ export default function ChatWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Client-side AI chatbot - v2.0
+  // Client-side AI chatbot - v2.1 (debug version)
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -74,6 +74,11 @@ export default function ChatWidget() {
   const sendMessage = async () => {
     const trimmed = input.trim();
     if (!trimmed || isLoading) return;
+
+    // Debug: Check if API key is available
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    console.log('API Key available:', !!apiKey);
+    console.log('API Key length:', apiKey?.length || 0);
 
     const userMessage: Message = { role: "user", content: trimmed };
     const newMessages = [...messages, userMessage];
