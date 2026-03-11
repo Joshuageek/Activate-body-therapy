@@ -76,23 +76,6 @@ export default function ChatWidget() {
     const trimmed = input.trim();
     if (!trimmed || isLoading) return;
 
-    // Simple rate limiting - prevent rapid requests
-    if (messages.length > 0) {
-      const lastMessage = messages[messages.length - 1];
-      const timeSinceLastMessage = Date.now() - (lastMessage.timestamp || 0);
-      if (timeSinceLastMessage < 500) { // 0.5 second cooldown
-        console.log('Please wait a moment before sending another message...');
-        setMessages((prev) => [...prev, { 
-          role: "assistant", 
-          content: "⏳ Please wait a moment before sending another message..." 
-        }]);
-        setTimeout(() => {
-          setMessages((prev) => prev.slice(0, -1));
-        }, 2000);
-        return;
-      }
-    }
-
     // Debug: Check if API key is available
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
     console.log('API Key available:', !!apiKey);
