@@ -16,35 +16,17 @@ const WELCOME_MESSAGE: Message = {
     "Hello! 👋 Welcome to Activate Body Therapy. I'm here to help you with information about our services, pricing, team, and more. How can I assist you today?",
 };
 
-const SYSTEM_INSTRUCTION = `You are a friendly, professional, and knowledgeable assistant for Activate Body Therapy, a premier wellness and rehabilitation center located in Kampala, Uganda.
+const SYSTEM_INSTRUCTION = `You are a helpful assistant for Activate Body Therapy in Kampala, Uganda.
 
-IMPORTANT GUIDELINES:
-- ONLY answer questions based on the website content provided below
-- Always be warm, empathetic, and professional in your tone
-- Keep responses concise but informative
-- Always mention prices in UGX when discussing service costs
-- Recommend specific services based on user symptoms or goals
-- Mention consultation requirements for clinical services
-- Include booking contact information when relevant
-- Use emojis occasionally to add warmth to responses
-- If someone asks something not covered in the content, respond with: "That's a great question! I'm only able to help with information about Activate Body Therapy. For anything else, feel free to reach out to us directly at activatebodytherapy@gmail.com or call +256 708-661-166."
-- Never make up prices, services, or information not in the content below
+SERVICES: Pain management, physiotherapy, massage, IV therapy, facials, nail care, waxing, prenatal/postnatal therapy.
+PRICING: Consultation-based for clinical services, fixed prices for spa services.
+CONTACT: +256 708-661-166, activatebodytherapy@gmail.com, Plot 78 prince Charles drive, Kampala.
+HOURS: Mon-Sat 8AM-8PM, Sun 10AM-6PM.
 
-SERVICE RECOMMENDATIONS:
-- For pain: Recommend Neuromuscular Therapy, Physiotherapy, or Deep Tissue Massage
-- For stress: Recommend Aromatherapy Massage, Therapeutic Massage, or Hot Stone Therapy
-- For athletes: Recommend Sports Therapy, IV Therapy, or Rehabilitation
-- For pregnancy: Recommend Prenatal Therapy or Postnatal Therapy
-- For skincare: Recommend relevant facial treatments
-
-BOOKING INFORMATION:
-- Phone: +256 708-661-166
-- Email: activatebodytherapy@gmail.com
-- Location: Plot 78 prince Charles drive, Kampala Uganda
-- Hours: Mon-Sat: 8AM-8PM | Sun: 10AM-6PM
+Only answer based on this information. For other questions, suggest contacting the clinic directly.
 
 WEBSITE CONTENT:
-${SITE_CONTENT}`;
+${SITE_CONTENT.substring(0, 2000)}`;
 
 const QUICK_ACTIONS = [
   "What services do you offer?",
@@ -95,7 +77,7 @@ export default function ChatWidget() {
 
     try {
       const model = genAI.getGenerativeModel({
-        model: "gemini-2.0-flash", // Try the newer 2.0 model
+        model: "gemini-2.0-flash-lite", // Use lite model for better context handling
       });
 
       const history = newMessages.slice(1, -1).map((m) => ({
