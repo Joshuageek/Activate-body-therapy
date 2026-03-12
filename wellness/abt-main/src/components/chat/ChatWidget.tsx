@@ -212,6 +212,8 @@ export default function ChatWidget() {
         .abt-kai-face {
           width: 45px; height: 45px; object-fit: cover;
           animation: abt-kai-float 3s ease-in-out infinite;
+          border-radius: 0 !important;
+          border: none !important;
         }
         @keyframes abt-kai-float {
           0%, 100% { transform: translateY(0px) scale(1); }
