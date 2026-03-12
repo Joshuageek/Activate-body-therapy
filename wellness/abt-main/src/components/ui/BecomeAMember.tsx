@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const BecomeAMember = () => {
@@ -35,7 +34,7 @@ const BecomeAMember = () => {
           className="
             relative z-10
             flex flex-col items-center justify-center
-            w-full h-full
+            w-24 h-24
             rounded-full
             bg-usawa-green-soft
             text-white
@@ -44,7 +43,6 @@ const BecomeAMember = () => {
             hover:scale-110 hover:shadow-2xl
           "
         >
-          <Sparkles size={16} className="mb-1 opacity-90" />
           <span className="text-[12px] font-semibold leading-tight">
             Join
           </span>

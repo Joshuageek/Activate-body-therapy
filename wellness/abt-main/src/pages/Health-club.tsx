@@ -4,20 +4,6 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import healthclubHero from "@/assets/healthclub-hero.jpg";
-import {
-  Dumbbell,
-  Users,
-  Sparkles,
-  Heart,
-  Droplets,
-  Check,
-  Phone,
-  Calendar,
-  Crown,
-  Building2,
-  Activity,
-  Leaf,
-} from "lucide-react";
 
 /* ================= SERVICE IMAGES ================= */
 import gymImg from "@/assets/gym.jpg";
@@ -26,15 +12,30 @@ import spaImg from "@/assets/spa.jpg";
 import nutrientssImg from "@/assets/nutrientss.jpg";
 import ivtreatsImg from "@/assets/ivtreats.jpg";
 import fitnessImg from "@/assets/fitness.jpg";
+import gym1Img from "@/assets/gym1.jpg";
+import { Calendar, Check, Phone } from "lucide-react";
 
 /* ================= SERVICES ================= */
 const healthClubServices = [
+  {
+  id: 2,
+  title: "Membership Packages",
+  description:
+    "Our membership packages provide access to ABT Health Club’s premium facilities, allowing clients to enjoy a structured and supportive wellness environment. Members benefit from guided fitness, recovery amenities, and lifestyle support designed to promote consistency, accountability, and sustainable health improvements.",
+  image: gym1Img,
+  benefits: [
+    "Access to premium fitness facilities",
+    "Guided fitness and wellness support",
+    "Recovery and lifestyle amenities",
+    "Packages for individuals, couples, families & corporate clients",
+  ],
+},
   {
     id: 2,
     title: "Personal Training",
     description:
       "Professional personal training services tailored to individual fitness goals, focusing on strength, mobility, endurance, and functional movement while minimizing injury risk.",
-    icon: Dumbbell,
+    
     image: trainingImg,
     benefits: [
       "Customized fitness programs",
@@ -48,7 +49,7 @@ const healthClubServices = [
     title: "Spa & Recovery Treatments",
     description:
       "Relaxation and recovery services designed to restore the body and mind, reduce stress, and enhance overall well-being as part of a balanced lifestyle.",
-    icon: Sparkles,
+    
     image: spaImg,
     benefits: [
       "Muscle relaxation & stress reduction",
@@ -62,7 +63,7 @@ const healthClubServices = [
     title: "Fitness & Movement Classes",
     description:
       "Guided fitness and movement classes designed for different fitness levels, focusing on strength, flexibility, coordination, and cardiovascular health.",
-    icon: Activity,
+    
     image: fitnessImg,
     benefits: [
       "Suitable for all fitness levels",
@@ -76,7 +77,7 @@ const healthClubServices = [
     title: "IV Treatments",
     description:
       "Wellness IV treatments delivering essential vitamins, minerals, and hydration directly into the bloodstream for faster absorption and effective results.",
-    icon: Droplets,
+    
     image: ivtreatsImg,
     benefits: [
       "Boosts energy and immunity",
@@ -90,7 +91,7 @@ const healthClubServices = [
     title: "Nutrition & Lifestyle Support",
     description:
       "Nutrition guidance focused on balanced meals, mindful eating, and sustainable lifestyle choices to support long-term health and wellness goals.",
-    icon: Leaf,
+    
     image: nutrientssImg,
     benefits: [
       "Balanced nutrition guidance",
@@ -107,23 +108,42 @@ const memberships = [
   {
     id: 1,
     title: "Fitness Package",
-    icon: Dumbbell,
     featured: false,
     features: ["Full Gym Access", "1 Relaxation OR IV Treatment", "10 PT sessions per month", "Unlimited Sauna & Steam", "Swimming Pool Access"],
   },
   {
-    id: 2,
-    title: "Club Membership",
-    icon: Crown,
-    featured: true,
-    features: ["Full Gym Access", "Group Classes", "IV Treatment", "Unlimited Sauna & Steam", "Swimming Pool Access"],
-  },
-  {
     id: 3,
-    title: "Corporate Membership",
-    icon: Building2,
+    title: "Corporate Membership(2 Adults upto 2 Kids)",
+    
     featured: false,
     features: ["Corporate Wellness Access", "Relaxation Treatments", "IV Therapy", "Sauna & Steam", "Swimming Pool"],
+  },
+  {
+    id: 4,
+    title: "Family Membership",
+    
+    featured: false,
+    features: ["Full Gym Access", "1 Relaxation Treatment", "1 IV Treatment", "Unlimited Steam Room & Sauna Access", "UnlimitedSwimming Pool"],
+  },
+  {
+    id: 5,
+    title: "Wellness Membership",
+    featured: false,
+    features: ["Full Gym Access", "1 Hydration IV Treat after Consultation", "4 Beauty or Body Treatments", "Unlimited Steam Room & Sauna Access", "Unlimited Swimming Pool"],
+  },
+  {
+    id: 6,
+    title: "Club Membership",
+    
+    featured: false,
+    features: ["Full Gym Access", "1 Relaxation Treatment or IV Treatment", "4 Beauty or Body Treatments", "1 Group Class Excluding Yoga", "Unlimited Steam & Sauna Room Pool","Unlimited Swimming Pool"],
+  },
+  {
+    id: 7,
+    title: "IV Membership",
+    
+    featured: false,
+    features: ["4 IV Hydration Treatments after consultation", "Beauty Package Products", "1 Beauty or Body Treatments", "Unlimited Steam & Sauna Room Pool","Unlimited Swimming Pool"],
   },
 ];
 
@@ -159,10 +179,7 @@ const MembershipModal = ({ open, onClose }: { open: boolean; onClose: () => void
                   m.featured ? "border-usawa-green ring-2 ring-usawa-green/20" : "border-border"
                 }`}
               >
-                <div className="text-center mb-4">
-                  <div className="w-14 h-14 mx-auto bg-usawa-green/10 rounded-xl flex items-center justify-center mb-3">
-                    <m.icon className="w-7 h-7 text-usawa-green" />
-                  </div>
+                <div className="mb-4">
                   <h3 className="font-serif text-lg font-semibold text-usawa-green">{m.title}</h3>
                 </div>
 
@@ -280,22 +297,20 @@ const HealthClub = () => {
                   style={{ backgroundImage: `url(${service.image})` }}
                 />
                 {/* KEEP overlay on service cards */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500" />
                 {/* Content */}
                 <div className="relative z-10 p-8 transition-transform duration-500 group-hover:-translate-y-1">
-                  <div className="w-16 h-16 bg-usawa-green/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-usawa-green/20 transition-colors">
-                    <service.icon className="w-8 h-8 text-white" />
-                  </div>
+                  
 
                   <h3 className="font-serif text-xl font-semibold text-white mb-3">{service.title}</h3>
                   
                   {/* Small spacer to push buttons down slightly */}
-                  <div className="h-[300px]" />
+                  <div className="h-[400px]" />
 
-                  <div className="flex gap-4">
+                  <div className="mt-auto flex justify-center gap-4">
                     {/* Join Now */}
                     <Button
-                      className="flex-1 bg-usawa-green text-white"
+                      className="w-32 h-12 bg-usawa-green text-white"
                       onClick={() => setShowMemberships(true)}
                     >
                       Join Now
@@ -304,7 +319,7 @@ const HealthClub = () => {
                     {/* Learn More */}
                     <Button
                       asChild
-                      className="flex-1 bg-usawa-green/70 hover:bg-usawa-green text-white"
+                      className="w-32 h-12 bg-usawa-green/70 hover:bg-usawa-green text-white"
                     >
                       <Link to="/services">Learn More</Link>
                     </Button>

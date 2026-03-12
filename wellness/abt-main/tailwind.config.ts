@@ -135,9 +135,11 @@ export default {
         "scale-in": "scale-in 0.4s ease-out forwards",
         float: "float 6s ease-in-out infinite",
         pulse: "pulse 2s ease-in-out infinite",
+        
       },
     },
   },
+  
 
   textShadow: {
     sm: "0 1px 2px rgba(0,0,0,0.25)",

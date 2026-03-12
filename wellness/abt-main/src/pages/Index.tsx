@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {ArrowRight,Star,Users,Award,Heart,Activity,HeartPulse,BicepsFlexed,Infinity,} from "lucide-react";
-import therapySession from "/therapy-session.jpg";
+import therapySession from "/therapy-session1.jpg";
 import massageHands from "/massage-hands.jpg";
 import Layout from "@/components/layout/Layout";
 import Counter from "@/components/Counter";
@@ -129,7 +129,7 @@ const Index = () => {
     </video>
     {/* Gradient Overlay */}
     <div
-  className="absolute inset-0 bg-black/05" 
+  className="absolute inset-0 bg-black/30 " 
 />
 
     </div>
@@ -285,7 +285,7 @@ const Index = () => {
 
       {/* About Preview Section */}
       <section className="py-20 md:py-28">
-        <div className="container mx-auto px-4">
+        <div className="container mt-auto overflow-hidden">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
               className="relative"

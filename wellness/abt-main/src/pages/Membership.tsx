@@ -15,22 +15,16 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import {
-  Dumbbell,
-  Crown,
-  Building2,
-  Users,
-  Sparkles,
-  Check,
   ArrowLeft,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const membershipOptions = [
-  { id: "fitness", title: "Fitness Package", icon: Dumbbell },
-  { id: "club", title: "Club Membership", icon: Crown },
-  { id: "corporate", title: "Corporate Membership", icon: Building2 },
-  { id: "family", title: "Family Package", icon: Users },
-  { id: "wellness", title: "Wellness Package", icon: Sparkles },
+  { id: "fitness", title: "Fitness Package",  },
+  { id: "club", title: "Club Membership",  },
+  { id: "corporate", title: "Corporate Membership",  },
+  { id: "family", title: "Family Package", },
+  { id: "wellness", title: "Wellness Package",  },
 ];
 
 const durationOptions = [
@@ -207,7 +201,7 @@ const Membership = () => {
                           htmlFor={option.id}
                           className="flex flex-col items-center justify-center p-6 rounded-xl border-2 border-border bg-background cursor-pointer transition-all hover:border-usawa-green/50 peer-data-[state=checked]:border-usawa-green peer-data-[state=checked]:bg-usawa-green/5"
                         >
-                          <option.icon className="w-8 h-8 text-usawa-green mb-3" />
+                          
                           <span className="font-medium text-foreground text-center">
                             {option.title}
                           </span>
@@ -265,7 +259,7 @@ const Membership = () => {
                 {/* Benefits Reminder */}
                 <div className="p-6 bg-sage/5 rounded-xl border border-usawa-green/10">
                   <h3 className="font-semibold text-usawa-green mb-4 flex items-center gap-2">
-                    <Sparkles className="w-5 h-5" />
+                   
                     What's included with your membership
                   </h3>
                   <ul className="grid sm:grid-cols-2 gap-2">
@@ -281,7 +275,7 @@ const Membership = () => {
                         key={idx}
                         className="flex items-center gap-2 text-sm text-muted-foreground"
                       >
-                        <Check className="w-4 h-4 text-usawa-green flex-shrink-0" />
+                        
                         {benefit}
                       </li>
                     ))}
