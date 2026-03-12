@@ -206,6 +206,7 @@ export default function ChatWidget() {
           border: none; cursor: pointer; display: flex; align-items: center;
           justify-content: center; box-shadow: 0 4px 24px hsla(177, 49%, 50%, 0.35);
           transition: transform 0.2s ease, box-shadow 0.2s ease; z-index: 9999;
+          border-radius: 0;
         }
         .abt-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 30px hsla(177, 49%, 50%, 0.45); }
         .abt-bubble svg { width: 26px; height: 26px; color: #fff; }
