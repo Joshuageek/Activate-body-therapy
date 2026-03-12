@@ -200,7 +200,14 @@ export default function ChatWidget() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
         .abt-widget * { box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
-                .abt-kai-face {
+        .abt-bubble {
+          position: fixed; bottom: 90px; right: 28px; width: 58px; height: 58px;
+          border: none; cursor: pointer; display: flex; align-items: center;
+          justify-content: center; box-shadow: 0 4px 24px hsla(177, 49%, 50%, 0.35);
+          transition: transform 0.2s ease, box-shadow 0.2s ease; z-index: 9999;
+        }
+        .abt-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 30px hsla(177, 49%, 50%, 0.45); }
+        .abt-kai-face {
           width: 45px; height: 45px; object-fit: cover;
           animation: abt-kai-float 3s ease-in-out infinite;
           border-radius: 0 !important;
