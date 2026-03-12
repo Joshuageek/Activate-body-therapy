@@ -203,8 +203,7 @@ export default function ChatWidget() {
         .abt-bubble {
           position: fixed; bottom: 90px; right: 28px; width: 58px; height: 58px;
           border: none; cursor: pointer; display: flex; align-items: center;
-          justify-content: center; box-shadow: 0 4px 24px hsla(177, 49%, 50%, 0.35);
-          transition: transform 0.2s ease, box-shadow 0.2s ease; z-index: 9999;
+          justify-content: center; transition: transform 0.2s ease; z-index: 9999;
         }
         .abt-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 30px hsla(177, 49%, 50%, 0.45); }
         .abt-kai-face {
