@@ -209,6 +209,14 @@ export default function ChatWidget() {
         }
         .abt-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 30px hsla(177, 49%, 50%, 0.45); }
         .abt-bubble svg { width: 26px; height: 26px; color: #fff; }
+        .abt-kai-face {
+          width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
+          animation: abt-kai-float 3s ease-in-out infinite;
+        }
+        @keyframes abt-kai-float {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          50% { transform: translateY(-3px) scale(1.02); }
+        }
         .abt-window {
           position: fixed; bottom: 100px; right: 28px; width: 370px; height: 560px;
           background: #faf9f6; border-radius: 20px; box-shadow: 0 8px 48px rgba(0,0,0,0.14);
@@ -387,9 +395,11 @@ export default function ChatWidget() {
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
+            <img 
+              src="/images/Kai.png" 
+              alt="KAI" 
+              className="abt-kai-face"
+            />
           )}
         </button>
       </div>
