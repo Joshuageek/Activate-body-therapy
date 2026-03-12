@@ -202,7 +202,7 @@ export default function ChatWidget() {
         .abt-widget * { box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
         .abt-bubble {
           position: fixed; bottom: 90px; right: 28px; width: 58px; height: 58px;
-          border-radius: 50%; background: hsl(177, 49%, 50%);
+          background: hsl(177, 49%, 50%);
           border: none; cursor: pointer; display: flex; align-items: center;
           justify-content: center; box-shadow: 0 4px 24px hsla(177, 49%, 50%, 0.35);
           transition: transform 0.2s ease, box-shadow 0.2s ease; z-index: 9999;
@@ -235,6 +235,9 @@ export default function ChatWidget() {
           display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .abt-header-avatar svg { width: 22px; height: 22px; color: #fff; }
+        .abt-header-kai-face {
+          width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
+        }
         .abt-header-text { flex: 1; }
         .abt-header-name {
           font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500;
@@ -318,9 +321,11 @@ export default function ChatWidget() {
           <div className="abt-window">
             <div className="abt-header">
               <div className="abt-header-avatar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
+                <img 
+                  src="/images/Kai.png" 
+                  alt="KAI" 
+                  className="abt-header-kai-face"
+                />
               </div>
               <div className="abt-header-text">
                 <div className="abt-header-name">KAI - Wellness Guide</div>
