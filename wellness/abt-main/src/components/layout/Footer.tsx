@@ -105,9 +105,9 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-primary" />
                 <span className="text-sm text-muted-foreground">
-                  Plot 78 prince Charles Drive
+                  Plot 12 Kyadondo Road
                   <br />
-                  Kampala Uganda
+                  Nakasero Uganda
                 </span>
               </li>
               <li className="flex items-center gap-3">

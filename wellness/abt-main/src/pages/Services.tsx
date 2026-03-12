@@ -184,22 +184,6 @@ const services = [
   image: sports,
 },
 {
-  id: 8,
-  title: "Deep Tissue Therapy",
-  description:
-    "Deep tissue therapy targets deeper layers of muscle and connective tissue to relieve chronic tension and stress. It supports relaxation, improves circulation, and assists in managing conditions such as muscle stiffness, stress-related tension, and fibromyalgia.",
-  duration: "60 min",
-  price: "Consultation Based",
-  section: "Clinical Services",
-  benefits: [
-    "Relieves chronic tension",
-    "Improves circulation",
-    "Reduces muscle stiffness",
-    "Supports relaxation",
-  ],
-  image: deeptissue,
-},
-{
   id: 9,
   title: "Weight Management",
   description:
@@ -217,45 +201,13 @@ const services = [
     "We work with clients to create personalized plans that support healthy weight goals while improving overall well-being.",
 },
 {
-  id: 10,
-  title: "Prenatal Therapy",
-  description:
-    "Prenatal therapy is designed to support expectant mothers by relieving muscular tension, improving circulation, reducing discomfort, and enhancing mobility. Treatments are gentle, safe, and focused on improving comfort throughout pregnancy.",
-  duration: "60 min",
-  price: "Consultation Based",
-  section: "Clinical Services",
-  benefits: [
-    "Reduces pregnancy discomfort",
-    "Improves circulation",
-    "Enhances mobility",
-    "Safe and gentle care",
-  ],
-  image: prenatal,
-},
-{
-  id: 11,
-  title: "Postnatal Therapy",
-  description:
-    "Postnatal therapy supports recovery after childbirth, particularly addressing weakened core and lower back muscles. Through targeted exercises and therapeutic massage, we help restore strength, stability, and overall physical function.",
-  duration: "60 min",
-  price: "Consultation Based",
-  section: "Clinical Services",
-  benefits: [
-    "Restores core strength",
-    "Supports recovery",
-    "Improves posture",
-    "Enhances mobility",
-  ],
-  image: postnatal,
-},
-{
   id: 13,
   title: "Deep Tissue Massage",
   description:
     "A medically focused technique targeting deeper layers of muscle and connective tissue. Effective for chronic pain, persistent tension, postural issues, and limited mobility.",
   duration: "60 min",
   price: "UGX 200,000",
-  section: "Health Club Services",
+  section: "Health Club  & Clinical Services",
   benefits: [
     "Relieves chronic pain",
     "Improves mobility",
@@ -369,21 +321,12 @@ const services = [
   image: activate,
 },
 
-  { id: 22, 
-    title: "Prenatal Therapy", 
-    description: "A specialized treatment for expectant mothers, designed to relieve muscular tension, improve circulation, and promote relaxation while supporting maternal comfort and safety.", 
-    duration: "60 min", 
-    price: "UGX 180,000", 
-    section: "Health Club Services", 
-    benefits: [], 
-    image: prenatal, 
-  },
   { id: 23, 
-    title: "Postnatal Therapy", 
-    description: "A restorative therapy supporting recovery after childbirth, easing muscle tension, improving circulation, and restoring physical and emotional balance.", 
+    title: "Maternal Therapy (Prenatal & Postnatal)", 
+    description: "Specialized therapies for expectant and new mothers to relieve tension, improve circulation, and promote relaxation while supporting maternal comfort and recovery.", 
     duration: "60 min",
     price: "UGX 180,000", 
-    section: "Health Club Services",
+    section: "Health Club & Clinical Services",
     benefits: [], 
     image: postnatal, 
     },
@@ -405,106 +348,28 @@ const services = [
     image: mizan, 
   },
 
-  { id: 26, 
-    title: "Age-Defying Facial", 
-    description: "A targeted anti-aging treatment designed to soften fine lines, improve skin elasticity, and restore a youthful, refreshed appearance. This facial combines advanced techniques with potent active ingredients to stimulate collagen production, enhance firmness, and promote long-term skin health.", 
-    duration: "60 min", 
-    price: "UGX 140,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: age, 
-  },
-  { id: 27, 
-    title: "Acne Clearing Facial", 
-    description: "A results-driven therapeutic facial that deeply cleanses pores, controls excess oil, and reduces active breakouts. Ideal for acne-prone or congested skin, this treatment helps calm inflammation, prevent future blemishes, and restore skin balance.", 
-    duration: "60 min", 
-    price: "UGX 140,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: acne, 
-  },
-  { id: 28, 
-    title: "Signature Facial", 
-    description: "Our premium, fully customized facial tailored to your skin’s unique needs. Combines professional cleansing, exfoliation, facial massage, and targeted active treatments to restore hydration, improve texture, and reveal a healthy, radiant glow.", 
-    duration: "60 min", 
-    price: "UGX 140,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: signature, 
-  },
-  { id: 29, 
-    title: "Skin Brightening Facial", 
-    description: "A corrective facial focused on reducing pigmentation, dullness, and uneven skin tone. Uses targeted serums and gentle exfoliation to enhance clarity, even complexion, and restore natural luminosity.", 
-    duration: "60 min", 
-    price: "UGX 140,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: skin, 
-  },
-  { id: 30, 
-    title: "Regeneration Facial", 
-    description: "A restorative treatment that supports skin repair and cellular renewal. Ideal for tired, stressed, or environmentally damaged skin, this facial improves resilience, smoothness, and overall skin vitality.", 
-    duration: "60 min", 
-    price: "UGX 170,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: regen, 
-  },
-  { id: 31, 
-    title: "Miracle Lifting Facial", 
-    description: "An advanced firming and lifting facial designed to improve skin tone, elasticity, and facial contours. Stimulates collagen production while visibly tightening and smoothing the skin for a more youthful appearance.", 
-    duration: "60 min", 
-    price: "UGX 170,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: miracle, 
-  },
-  { id: 32, 
-    title: "Gold Mask Facial", 
-    description: "A luxurious facial experience using 24K gold-infused masks to nourish, rejuvenate, and illuminate the skin. Helps improve circulation, enhance radiance, and deliver powerful anti-aging benefits.", 
-    duration: "60 min", 
-    price: "UGX 170,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: gold, 
-  },
-  { id: 33, 
-    title: "Sensitive Skin Facial", 
-    description: "A gentle, calming facial formulated specifically for delicate or reactive skin. Reduces redness, irritation, and inflammation while restoring comfort, hydration, and skin balance.", 
-    duration: "60 min", 
-    price: "UGX 170,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: sensitive, 
-  },
-  { id: 34, 
-    title: "Hydrating Facial", 
-    description: "A deeply moisturizing treatment designed to replenish dehydrated skin and restore softness, elasticity, and vitality. Ideal for dry, dull, or climate-stressed skin.", 
-    duration: "60 min", 
-    price: "UGX 170,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: hydrating, 
-  },
-  { id: 35, 
-    title: "Calming Facial", 
-    description: "A soothing facial that addresses stress-related skin concerns while promoting deep relaxation. Combines gentle massage, calming serums, and restorative techniques to relax both the skin and the mind.", 
-    duration: "60 min", 
-    price: "UGX 170,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: skin, 
-  },
-  { id: 36, 
-    title: "Mini Facial", 
-    description: "A quick yet effective facial offering cleansing, light exfoliation, and hydration. Perfect for maintaining skin health between full treatments or for clients with limited time.", 
-    duration: "30 min", 
-    price: "UGX 70,000", 
-    section: "Facial Treatments", 
-    benefits: [], 
-    image: mini,
-  },
-
+  {
+  id: 36,
+  title: "Facial Treatments",
+  description: "Professional facial treatments designed to cleanse, rejuvenate, and restore healthy, radiant skin while addressing specific skin concerns.",
+  duration: "60 min",
+  section: "Health Club Services",
+  image: signature,
+  benefits: [],
+  treatments: [
+    { title: "Age-Defying Facial", price: "UGX 140,000" },
+    { title: "Acne Clearing Facial", price: "UGX 140,000" },
+    { title: "Signature Facial", price: "UGX 140,000" },
+    { title: "Skin Brightening Facial", price: "UGX 140,000" },
+    { title: "Regeneration Facial", price: "UGX 170,000" },
+    { title: "Miracle Lifting Facial", price: "UGX 170,000" },
+    { title: "Gold Mask Facial", price: "UGX 170,000" },
+    { title: "Sensitive Skin Facial", price: "UGX 170,000" },
+    { title: "Hydrating Facial", price: "UGX 170,000" },
+    { title: "Calming Facial", price: "UGX 170,000" },
+    { title: "Mini Facial", price: "UGX 70,000" }
+  ],
+},
   {
   id: 37,
   title: "Nail Care Services",
@@ -577,9 +442,11 @@ const services = [
 
 const Services = () => {
   const [openNailTreatments, setOpenNailTreatments] = useState(false);
+  const [openFacialTreatments, setOpenFacialTreatments] = useState(false);
   const [openWaxingTreatments, setOpenWaxingTreatments] = useState(false);
   const [openIvTreatments, setOpenIvTreatments] = useState(false);
   const nailService = services.find((s) => s.id === 37);
+  const facialService = services.find((s) => s.id === 36);
   const waxingService = services.find((s) => s.id === 38);
   const ivService = services.find((s) => s.id === 39);
 
@@ -636,7 +503,7 @@ const Services = () => {
                   className={`${index % 2 === 1 ? "lg:order-2" : ""}`}
                 >
                   <div className="relative">
-                    <div className="aspect-[4/3] rounded-2xl overflow-hidden relative group">
+                    <div className="aspect-[4/3] rounded-2xl overflow-hidden relative group neon-glow">
                       <img 
                         src={service.image} 
                         alt={service.title}
@@ -708,6 +575,15 @@ const Services = () => {
                   <Button
                     variant="hero"
                     onClick={() => setOpenNailTreatments(true)}
+                  >
+                    View Treatments
+                    <ArrowRight size={16} />
+                  </Button>
+                )}
+                {service.id === 36 && (
+                  <Button
+                    variant="hero"
+                    onClick={() => setOpenFacialTreatments(true)}
                   >
                     View Treatments
                     <ArrowRight size={16} />
@@ -939,6 +815,125 @@ const Services = () => {
       {/* Actions */}
       <div className="flex justify-end gap-3">
         <Button variant="outline" onClick={() => setOpenWaxingTreatments(false)}>
+          Close
+        </Button>
+        <Button asChild variant="hero">
+          <Link to="/contact">
+            Book Now
+            <ArrowRight size={16} />
+          </Link>
+        </Button>
+      </div>
+
+    </div>
+  </div>
+)}
+{/* Modal Content */}
+     {openNailTreatments && nailService && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+    <div className="bg-white w-full max-w-md rounded-2xl p-6 relative animate-fade-in">
+
+      {/* Close */}
+      <button
+        onClick={() => setOpenNailTreatments(false)}
+        className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
+      >
+        ✕
+      </button>
+
+      {/* Title */}
+      <h3 className="text-2xl font-serif font-bold mb-2">
+        {nailService.title}
+      </h3>
+
+      {/* Description */}
+      <p className="text-sm text-muted-foreground mb-6">
+        {nailService.description}
+      </p>
+
+      {/* Treatments */}
+      <div className="space-y-3 mb-6">
+        {nailService.treatments.map((item) => (
+          <div
+            key={item.title}
+            className="flex items-center justify-between p-4 bg-muted rounded-xl hover:bg-muted/70 transition"
+          >
+            <span className="font-medium text-foreground">
+              {item.title}
+            </span>
+            <span className="font-semibold text-warm-gray-700">
+              {item.price}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Actions */}
+      <div className="flex justify-end gap-3">
+        <Button variant="outline" onClick={() => setOpenNailTreatments(false)}>
+          Close
+        </Button>
+        <Button asChild variant="hero">
+          <Link to="/contact">
+            Book Now
+            <ArrowRight size={16} />
+          </Link>
+        </Button>
+      </div>
+
+    </div>
+  </div>
+)}
+{/* Modal Content */}
+     {openFacialTreatments && facialService && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+  <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-2xl p-6 relative animate-fade-in flex flex-col">
+
+      {/* Close */}
+      <button
+        onClick={() => setOpenFacialTreatments(false)}
+        className="absolute top-4 right-4 text-muted-foreground hover:text-foreground"
+      >
+        ✕
+      </button>
+
+      {/* Title */}
+      <h3 className="text-2xl font-serif font-bold mb-2">
+        {facialService.title}
+      </h3>
+
+      {/* Description */}
+      <p className="text-sm text-muted-foreground mb-6">
+        {facialService.description}
+      </p>
+
+      {/* Treatments */}
+        <div className="grid grid-cols-1 gap-3 mb-6 overflow-y-auto pr-2"
+            style={{ maxHeight: "45vh" }}>
+          {facialService.treatments.map((item) => (
+            <div
+              key={item.title}
+              className="p-4 bg-muted rounded-xl hover:bg-muted/70 transition"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-medium text-foreground">
+                  {item.title}
+                </span>
+                <span className="font-semibold text-warm-gray-700">
+                  {item.price}
+                </span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+
+      {/* Actions */}
+      <div className="flex justify-end gap-3">
+        <Button variant="outline" onClick={() => setOpenFacialTreatments(false)}>
           Close
         </Button>
         <Button asChild variant="hero">

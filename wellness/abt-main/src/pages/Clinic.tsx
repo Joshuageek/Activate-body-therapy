@@ -255,8 +255,8 @@ const Clinic = () => {
                     {service.description}
                   </p>
 
-                  <div className="mt-auto">
-                    <Button asChild className="w-full h-12 bg-usawa-green text-white">
+                  <div className="mt-auto flex justify-center">
+                    <Button asChild className="w-32 h-12 bg-usawa-green text-white">
                       <Link to="/services">Learn More</Link>
                     </Button>
                   </div>
