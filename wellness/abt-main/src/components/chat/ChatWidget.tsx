@@ -210,7 +210,7 @@ export default function ChatWidget() {
         .abt-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 30px hsla(177, 49%, 50%, 0.45); }
         .abt-bubble svg { width: 26px; height: 26px; color: #fff; }
         .abt-kai-face {
-          width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
+          width: 45px; height: 45px; object-fit: cover;
           animation: abt-kai-float 3s ease-in-out infinite;
         }
         @keyframes abt-kai-float {
