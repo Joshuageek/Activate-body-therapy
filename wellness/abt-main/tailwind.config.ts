@@ -19,10 +19,9 @@ export default {
         sans: ["Montserrat", "system-ui", "sans-serif"],
         serif: ["Maradona", "Georgia", "serif"],
         "maradona-junior": ['"Maradona Junior"', "cursive"],
-        ananda: ['"Ananda"', "sans-serif"],
-        quidity: ['"Quidity"', 'cursive'],
-        priestacy: ['"Priestacy"', 'cursive'],
-
+        ananda: ['"Ananda"', "Montserrat", "sans-serif"],
+        quidity: ['"Quidity"', "cursive"],
+        priestacy: ['"Priestacy"', "serif"],
       },
       colors: {
         "usawa-green": "hsl(177, 74%, 48%)",        // base turquoise

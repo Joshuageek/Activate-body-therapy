@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { SITE_CONTENT } from "../../siteContent";
 
 interface Message {
@@ -73,6 +74,10 @@ export default function ChatWidget() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const location = useLocation();
+
+  // Don't show on the Usawa page
+  if (location.pathname === "/usawa") return null;
 
   // Client-side AI chatbot - v2.1 (debug version)
   useEffect(() => {

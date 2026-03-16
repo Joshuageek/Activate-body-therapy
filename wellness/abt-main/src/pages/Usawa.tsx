@@ -260,20 +260,20 @@ const MenuCard = ({
       </div>
     )}
 
-    <h4 className="font-semibold text-usawa text-center text-sm leading-tight mb-2 min-h-[40px] flex items-center justify-center">
+    <h4 className="font-semibold text-usawa text-center text-sm md:text-base leading-tight mb-2 min-h-[40px] flex items-center justify-center">
       {item.name}
     </h4>
 
     {item.description && (
-      <p className="text-warm-gray text-xs text-center mb-3 line-clamp-2 min-h-[32px]">
+      <p className="text-warm-gray text-xs md:text-sm text-center mb-3 line-clamp-2 min-h-[32px]">
         {item.description}
       </p>
     )}
 
     <div className="text-center mb-3">
-      <span className="font-bold text-usawa text-lg">{item.price}</span>
+      <span className="font-bold text-usawa text-base md:text-lg">{item.price}</span>
       {item.priceAlt && (
-        <span className="text-usawa-green/70 text-sm ml-1">
+        <span className="text-usawa-green/70 text-xs md:text-sm ml-1">
           / {item.priceAlt}
         </span>
       )}
