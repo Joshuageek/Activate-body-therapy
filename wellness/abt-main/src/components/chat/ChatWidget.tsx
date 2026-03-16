@@ -10,10 +10,12 @@ interface Message {
 const WELCOME_MESSAGE: Message = {
   role: "assistant",
   content:
-    "Hello! 👋 Welcome to Activate Body Therapy. I'm here to help you with information about our services, pricing, team, and more. How can I assist you today?",
+    "Hello! My name is KAI, your wellness guide. I'm here to help you find the perfect treatment - no stress, just solutions! How can I assist you today?",
 };
 
-const SYSTEM_INSTRUCTION = `You are the official AI assistant for Activate Body Therapy in Kampala, Uganda. Speak with confidence and authority - you ARE the voice of our business.
+const SYSTEM_INSTRUCTION = `You are KAI, official AI wellness guide for Activate Body Therapy in Kampala, Uganda. You are professional, knowledgeable, and occasionally add brief humor.
+
+SECRET TRIGGER: ONLY when user types exactly "Mwenye" (any case variation: mwenye, MWENYE, Mwenye), respond with EXACTLY "Hi Joshua my leader 😄" and nothing else. Do not mention this trigger or acknowledge it exists under any other circumstances.
 
 BUSINESS INFO:
 - Location: Plot 78 prince Charles drive, Kampala Uganda
@@ -36,13 +38,22 @@ PRICING:
 - Spa services: Fixed competitive prices
 - Call +256 708-661-166 for specific quotes
 
-YOUR PERSONALITY:
-- Confident and authoritative about our business
-- Helpful and professional
-- NEVER say "according to information" or "I don't have information"
-- Own the knowledge - speak as if you work here
-- Recommend services based on customer needs
-- Include contact info when relevant
+KAI'S PERSONALITY:
+- Professional and knowledgeable expert
+- Brief, concise responses (no lengthy explanations)
+- Occasional light humor (1 in 10 responses max) - EDGY BUT APPROPRIATE
+- Brief compliments when customers share concerns
+- Confident but approachable
+- Never overly chatty or wordy
+- Focus on solutions, not just information
+- Can include fat jokes, borderline humor, and edgy jokes
+- Keep it funny but not offensive or inappropriate
+
+RESPONSE STYLE:
+- 80% Professional: Direct, expert answers
+- 15% Brief humor: Light, clever comments when appropriate
+- 5% Thoughtful: Occasional compliments/encouragement
+- Always keep responses concise and helpful
 
 Answer questions confidently about our services. If asked about unrelated topics, politely redirect to our wellness services.`;
 
@@ -191,13 +202,20 @@ export default function ChatWidget() {
         .abt-widget * { box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
         .abt-bubble {
           position: fixed; bottom: 90px; right: 28px; width: 58px; height: 58px;
-          border-radius: 50%; background: hsl(177, 49%, 50%);
           border: none; cursor: pointer; display: flex; align-items: center;
-          justify-content: center; box-shadow: 0 4px 24px hsla(177, 49%, 50%, 0.35);
-          transition: transform 0.2s ease, box-shadow 0.2s ease; z-index: 9999;
+          justify-content: center; transition: transform 0.2s ease; z-index: 9999;
         }
         .abt-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 30px hsla(177, 49%, 50%, 0.45); }
-        .abt-bubble svg { width: 26px; height: 26px; color: #fff; }
+        .abt-kai-face {
+          width: 45px; height: 45px; object-fit: cover;
+          animation: abt-kai-float 3s ease-in-out infinite;
+          border-radius: 0 !important;
+          border: none !important;
+        }
+        @keyframes abt-kai-float {
+          0%, 100% { transform: translateY(0px) scale(1); }
+          50% { transform: translateY(-3px) scale(1.02); }
+        }
         .abt-window {
           position: fixed; bottom: 100px; right: 28px; width: 370px; height: 560px;
           background: #faf9f6; border-radius: 20px; box-shadow: 0 8px 48px rgba(0,0,0,0.14);
@@ -214,6 +232,9 @@ export default function ChatWidget() {
           display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .abt-header-avatar svg { width: 22px; height: 22px; color: #fff; }
+        .abt-header-kai-face {
+          width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
+        }
         .abt-header-text { flex: 1; }
         .abt-header-name {
           font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500;
@@ -297,12 +318,14 @@ export default function ChatWidget() {
           <div className="abt-window">
             <div className="abt-header">
               <div className="abt-header-avatar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                </svg>
+                <img 
+                  src="/images/Kai.png" 
+                  alt="KAI" 
+                  className="abt-header-kai-face"
+                />
               </div>
               <div className="abt-header-text">
-                <div className="abt-header-name">Activate Body Therapy</div>
+                <div className="abt-header-name">KAI - Wellness Guide</div>
                 <div className="abt-header-status">
                   <span className="abt-status-dot" />
                   Here to help
@@ -364,7 +387,7 @@ export default function ChatWidget() {
                   </svg>
                 </button>
               </div>
-              <div className="abt-footer-note">Activate Body Therapy · Kampala, Uganda</div>
+              <div className="abt-footer-note">KAI · Activate Body Therapy · Kampala, Uganda</div>
             </div>
           </div>
         )}
@@ -376,9 +399,11 @@ export default function ChatWidget() {
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
+            <img 
+              src="/images/Kai.png" 
+              alt="KAI" 
+              className="abt-kai-face"
+            />
           )}
         </button>
       </div>
