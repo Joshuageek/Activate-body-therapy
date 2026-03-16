@@ -470,7 +470,7 @@ const Index = () => {
             maskSize: "100% 100%",
           }}
         >
-          {[...partners, ...partners].map((logo, index) => (
+          {[...partners, ...partners, ...partners].map((logo, index) => (
             <div key={index} className="flex-shrink-0 w-28 h-14 flex items-center justify-center">
               <img
                 src={logo}
@@ -481,6 +481,9 @@ const Index = () => {
             </div>
           ))}
         </div>
+        {/* Blur overlays for seamless edges */}
+        <div className="absolute left-0 top-0 w-[10%] h-full pointer-events-none" style={{ backdropFilter: 'blur(2px)' }}></div>
+        <div className="absolute right-0 top-0 w-[10%] h-full pointer-events-none" style={{ backdropFilter: 'blur(2px)' }}></div>
       </div>
     </motion.div>
   </div>
@@ -493,7 +496,7 @@ const Index = () => {
       }
       @keyframes scroll {
         0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        100% { transform: translateX(-33.333%); }
       }
     `}
   </style>
