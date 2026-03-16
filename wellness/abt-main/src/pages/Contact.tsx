@@ -32,7 +32,7 @@ const contactInfo = [
     icon: MapPin,
     title: "Location",
     details: "Plot 12, Kyadondo Road, Nakasero Uganda | Plot 5 Naguru Hill East Rd, The Summit Residences, Kampala Uganda",
-    link: "#",
+    link: "https://www.google.com/maps?q=0.3304547,32.5792869&z=17&hl=en",
   },
   {
     icon: Clock,
@@ -156,7 +156,7 @@ const Contact = () => {
                   <h3 className="font-semibold text-usawa-green mb-2">Main Clinic</h3>
                   <div className="rounded-2xl overflow-hidden h-48">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7577!2d32.5825!3d0.3175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s8HRR%2BHW%20Kampala%2C%20Uganda!5e0!3m2!1sen!2s!4v1705000000000!5m2!1sen!2s"
+                      src="https://maps.google.com/maps?q=0.3304445,32.5792778&z=17&output=embed"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
@@ -166,7 +166,7 @@ const Contact = () => {
                       title="Main Clinic Location"
                     />
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">8HRR+HW Kampala</p>
+                  <p className="text-xs text-muted-foreground mt-1">8HJH+5PM Kampala</p>
                 </div>
                 <div>
                   <h3 className="font-semibold text-usawa-green mb-2">Health Club</h3>
