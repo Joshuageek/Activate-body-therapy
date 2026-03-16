@@ -19,8 +19,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: "+256 708-661-166",
-    link: "tel:+1234567890",
+    details: "+256 708-661-166 | +256 708 421 449",
+    link: "tel:+256 708-661-166 | tel:+256 708 421 449",
   },
   {
     icon: Mail,
@@ -31,7 +31,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Location",
-    details: "Plot 78 prince Charles drive, Kampala Uganda",
+    details: "Plot 12, Kyadondo Road, Nakasero Uganda | Plot 5 Naguru Hill East Rd, The Summit Residences, Kampala Uganda",
     link: "#",
   },
   {

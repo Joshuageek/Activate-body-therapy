@@ -201,7 +201,7 @@ export default function ChatWidget() {
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
         .abt-widget * { box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
         .abt-bubble {
-          position: fixed; bottom: 90px; right: 28px; width: 58px; height: 58px;
+          position: fixed; bottom: 110px; right: 28px; width: 58px; height: 58px;
           border: none; cursor: pointer; display: flex; align-items: center;
           justify-content: center; transition: transform 0.2s ease; z-index: 9999;
         }
@@ -217,7 +217,7 @@ export default function ChatWidget() {
           50% { transform: translateY(-3px) scale(1.02); }
         }
         .abt-window {
-          position: fixed; bottom: 100px; right: 28px; width: 370px; height: 560px;
+          position: fixed; bottom: 120px; right: 28px; width: 370px; height: 560px;
           background: #faf9f6; border-radius: 20px; box-shadow: 0 8px 48px rgba(0,0,0,0.14);
           display: flex; flex-direction: column; overflow: hidden; z-index: 9998;
           transform-origin: bottom right; animation: abt-pop 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -306,8 +306,8 @@ export default function ChatWidget() {
         .abt-send svg { width: 20px; height: 20px; }
         .abt-footer-note { text-align: center; font-size: 10.5px; color: hsla(177, 49%, 50%, 0.6); margin-top: 7px; font-weight: 300; }
         @media (max-width: 480px) {
-          .abt-window { width: calc(100vw - 20px); right: 10px; bottom: 86px; height: 70vh; }
-          .abt-bubble { bottom: 20px; right: 16px; }
+          .abt-window { width: calc(100vw - 20px); right: 10px; bottom: 176px; height: 70vh; }
+          .abt-bubble { bottom: 110px; right: 16px; }
           .abt-quick-actions { padding: 6px 12px; }
           .abt-quick-action { font-size: 10px; padding: 5px 8px; }
         }
