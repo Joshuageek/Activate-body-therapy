@@ -105,6 +105,7 @@ const TeamMemberCard = ({ member }: { member: any }) => {
         <img
           src={member.image}
           alt={member.name}
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
         />
       </div>
@@ -202,6 +203,7 @@ const About = () => {
                 <img
                   src={therapySession}
                   alt="Therapy session at ABT"
+                  loading="lazy"
                   className="w-full h-[500px] object-cover"
                 />
               </div>

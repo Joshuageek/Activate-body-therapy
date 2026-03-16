@@ -131,126 +131,164 @@ const Products = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative py-20 md:py-28 bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block px-4 py-2 bg-accent rounded-full text-sm font-medium text-accent-foreground mb-6">
-              Shop
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
-              Wellness Products
-              <br />
-              <span className="text-primary">For Home Care</span>
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Extend your wellness journey beyond the treatment room with our
-              curated collection of therapeutic products, carefully selected by
-              our experts.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Categories */}
-      <section className="py-8 border-b border-border bg-card">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  selectedCategory === category
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products Grid */}
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filteredProducts.map((product, index) => (
-              <div
-                key={product.id}
-                className="bg-card rounded-2xl overflow-hidden shadow-soft group opacity-0 animate-fade-in hover:shadow-medium transition-all duration-300"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <div className="relative aspect-square bg-accent flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                  />
-                  {product.bestseller && (
-                    <span className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
-                      Bestseller
-                    </span>
-                  )}
-                </div>
-
-                <div className="p-5">
-                  <span className="text-xs text-muted-foreground">
-                    {product.category}
-                  </span>
-                  <h3 className="text-lg font-serif font-semibold text-foreground mt-1 mb-2 group-hover:text-primary transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
-                    {product.description}
-                  </p>
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="flex items-center gap-1">
-                      <Star size={14} className="fill-primary text-primary" />
-                      <span className="text-sm font-medium">{product.rating}</span>
-                    </div>
-                    <span className="text-xs text-muted-foreground">
-                      ({product.reviews} reviews)
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xl font-bold text-foreground">
-                      UGX{product.price}
-                    </span>
-                    <Button size="sm" variant="outline">
-                      <ShoppingCart size={16} />
-                      Add
-                    </Button>
-                  </div>
-                </div>
+      {/* Coming Soon Overlay */}
+      <div className="relative min-h-screen">
+        {/* Blurred Content */}
+        <div className="filter blur-sm pointer-events-none">
+          {/* Hero Section */}
+          <section className="relative py-20 md:py-28 bg-muted/50">
+            <div className="container mx-auto px-4">
+              <div className="max-w-3xl mx-auto text-center">
+                <span className="inline-block px-4 py-2 bg-accent rounded-full text-sm font-medium text-accent-foreground mb-6">
+                  Shop
+                </span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
+                  Wellness Products
+                  <br />
+                  <span className="text-primary">For Home Care</span>
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Extend your wellness journey beyond the treatment room with our
+                  curated collection of therapeutic products, carefully selected by
+                  our experts.
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
+          </section>
 
-      {/* CTA Section */}
-      <section className="py-20 md:py-28 bg-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
-              Need Personalized Recommendations?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Our therapists can suggest the perfect products to complement your
-              treatment plan. Ask during your next visit or reach out to us!
-            </p>
-            <Button asChild variant="hero" size="lg">
-              <Link to="/contact">
-                Contact Us
-                <ArrowRight size={20} />
-              </Link>
-            </Button>
+          {/* Categories */}
+          <section className="py-8 border-b border-border bg-card">
+            <div className="container mx-auto px-4">
+              <div className="flex flex-wrap justify-center gap-3">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                      selectedCategory === category
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Products Grid */}
+          <section className="py-20 md:py-28">
+            <div className="container mx-auto px-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {filteredProducts.map((product, index) => (
+                  <div
+                    key={product.id}
+                    className="bg-card rounded-2xl overflow-hidden shadow-soft group opacity-0 animate-fade-in hover:shadow-medium transition-all duration-300"
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                  >
+                    <div className="relative aspect-square bg-accent flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
+                      {product.bestseller && (
+                        <span className="absolute top-4 left-4 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+                          Bestseller
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="p-5">
+                      <span className="text-xs text-muted-foreground">
+                        {product.category}
+                      </span>
+                      <h3 className="text-lg font-serif font-semibold text-foreground mt-1 mb-2 group-hover:text-primary transition-colors">
+                        {product.name}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                        {product.description}
+                      </p>
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="flex items-center gap-1">
+                          <Star size={14} className="fill-primary text-primary" />
+                          <span className="text-sm font-medium">{product.rating}</span>
+                        </div>
+                        <span className="text-xs text-muted-foreground">
+                          ({product.reviews} reviews)
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xl font-bold text-foreground">
+                          UGX{product.price}
+                        </span>
+                        <Button size="sm" variant="outline">
+                          <ShoppingCart size={16} />
+                          Add
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="py-20 md:py-28 bg-muted/50">
+            <div className="container mx-auto px-4">
+              <div className="max-w-3xl mx-auto text-center">
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
+                  Need Personalized Recommendations?
+                </h2>
+                <p className="text-lg text-muted-foreground mb-8">
+                  Our therapists can suggest the perfect products to complement your
+                  treatment plan. Ask during your next visit or reach out to us!
+                </p>
+                <Button asChild variant="hero" size="lg">
+                  <Link to="/contact">
+                    Contact Us
+                    <ArrowRight size={20} />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        {/* Coming Soon Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
+          <div className="text-center">
+            <div className="mb-6">
+              <div className="w-24 h-24 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+                <ShoppingCart size={32} className="text-primary" />
+              </div>
+              <h1 className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-4">
+                Coming Soon
+              </h1>
+              <p className="text-xl text-muted-foreground max-w-md mx-auto">
+                We're working hard to bring you our curated collection of wellness products.
+                Stay tuned for updates!
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild variant="hero" size="lg">
+                <Link to="/services">
+                  Explore Our Services
+                  <ArrowRight size={20} />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link to="/contact">
+                  Get Notified
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </Layout>
   );
 };

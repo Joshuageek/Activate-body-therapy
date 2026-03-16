@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Check } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import "@/styles/animations.css";
+import { slugify } from "@/lib/utils";
 import massageHands from "/massage-hands.jpg";
 import deepTissueImg from "/main.jpg";
 import rehaa from "/rehaa.jpg";
@@ -459,6 +460,7 @@ const Services = () => {
           <img 
             src={deepTissueImg} 
             alt="Therapy Session" 
+            loading="lazy"
             className="w-full h-full object-cover object-[50%_20%]"
           />
           <div className="absolute inset-0 bg-black/10" />
@@ -491,135 +493,138 @@ const Services = () => {
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-4">
           <div className="space-y-16">
-            {services.map((service, index) => (
-              <div
-                key={service.id}
-                className={`grid lg:grid-cols-2 gap-12 items-center opacity-0 animate-fade-in ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
+            {services.map((service, index) => {
+              const anchor = slugify(service.title);
+
+              return (
                 <div
-                  className={`${index % 2 === 1 ? "lg:order-2" : ""}`}
+                  id={anchor}
+                  key={service.id}
+                  className={`grid lg:grid-cols-2 gap-12 items-center opacity-0 animate-fade-in ${
+                    index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                  }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="relative">
-                    <div className="aspect-[4/3] rounded-2xl overflow-hidden relative group neon-glow">
-                      <img 
-                        src={service.image} 
-                        alt={service.title}
-                        className="w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105"
-                        style={breathingStyle}
+                  <div className={`${index % 2 === 1 ? "lg:order-2" : ""}`}>
+                    <div className="relative">
+                      <div className="aspect-[4/3] rounded-2xl overflow-hidden relative group neon-glow">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-all duration-1000 ease-in-out group-hover:scale-105"
+                          style={breathingStyle}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                      <div
+                        className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full -z-10"
+                        style={getFloatingStyle(service.id, 1)}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div
+                        className="absolute -top-6 -left-6 w-16 h-16 bg-secondary/20 rounded-full -z-10"
+                        style={getFloatingStyle(service.id, 0.6)}
+                      />
                     </div>
-                    <div 
-                      className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-full -z-10"
-                      style={getFloatingStyle(service.id, 1)}
-                    />
-                    <div 
-                      className="absolute -top-6 -left-6 w-16 h-16 bg-secondary/20 rounded-full -z-10"
-                      style={getFloatingStyle(service.id, 0.6)}
-                    />
-                  </div>
-                </div>
-
-                <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
-                    {service.title}
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-4 mb-6">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-muted rounded-lg">
-                      <Clock size={16} className="text-primary" />
-                      <span className="text-sm font-medium">
-                        {service.duration}
-                      </span>
-                    </div>
-                    {service.section && (
-                      <div className="px-4 py-2 bg-primary/10 rounded-lg">
-                        <span className="text-sm font-semibold text-usawa-green">
-                          {service.section}
-                        </span>
-                      </div>
-                    )}
-                    {service.price && (
-                      <div className="px-4 py-2 bg-primary/10 rounded-lg">
-                        <span className="text-sm font-semibold text-warm-gray-700">
-                          {service.price}
-                        </span>
-                      </div>
-                    )}
                   </div>
 
-                  <ul className="space-y-3 mb-8">
-                    {service.benefits.map((benefit) => (
-                      <li key={benefit} className="flex items-center gap-3">
-                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
-                          <Check size={12} className="text-primary" />
+                  <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                    <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
+                      {service.title}
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-4 mb-6">
+                      <div className="flex items-center gap-2 px-4 py-2 bg-muted rounded-lg">
+                        <Clock size={16} className="text-primary" />
+                        <span className="text-sm font-medium">
+                          {service.duration}
+                        </span>
+                      </div>
+                      {service.section && (
+                        <div className="px-4 py-2 bg-primary/10 rounded-lg">
+                          <span className="text-sm font-semibold text-usawa-green">
+                            {service.section}
+                          </span>
                         </div>
-                        <span className="text-sm text-foreground">
-                          {benefit}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    {service.extraInfo}
-                  </p>
+                      )}
+                      {service.price && (
+                        <div className="px-4 py-2 bg-primary/10 rounded-lg">
+                          <span className="text-sm font-semibold text-warm-gray-700">
+                            {service.price}
+                          </span>
+                        </div>
+                      )}
+                    </div>
 
-                  <div className="flex flex-wrap gap-4 mb-6">
-                 {service.id === 37 && (
-                  <Button
-                    variant="hero"
-                    onClick={() => setOpenNailTreatments(true)}
-                  >
-                    View Treatments
-                    <ArrowRight size={16} />
-                  </Button>
-                )}
-                {service.id === 36 && (
-                  <Button
-                    variant="hero"
-                    onClick={() => setOpenFacialTreatments(true)}
-                  >
-                    View Treatments
-                    <ArrowRight size={16} />
-                  </Button>
-                )}
-                {service.id === 38 && (
-                  <Button
-                    variant="hero"
-                    onClick={() => setOpenWaxingTreatments(true)}
-                  >
-                    View Treatments
-                    <ArrowRight size={16} />
-                  </Button>
-                )}
-                {service.id === 39 && (
-                  <Button
-                    variant="hero"
-                    onClick={() => setOpenIvTreatments(true)}
-                  >
-                    View Treatments
-                    <ArrowRight size={16} />
-                  </Button>
-                )}
+                    <ul className="space-y-3 mb-8">
+                      {service.benefits.map((benefit) => (
+                        <li key={benefit} className="flex items-center gap-3">
+                          <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
+                            <Check size={12} className="text-primary" />
+                          </div>
+                          <span className="text-sm text-foreground">
+                            {benefit}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
 
+                    <p className="text-muted-foreground leading-relaxed mb-6">
+                      {service.extraInfo}
+                    </p>
 
-                  <Button asChild variant="hero">
-                    <Link to="/contact">
-                      Book This Service
-                      <ArrowRight size={18} />
-                    </Link>
-                  </Button>
+                    <div className="flex flex-wrap gap-4 mb-6">
+                      {service.id === 37 && (
+                        <Button
+                          variant="hero"
+                          onClick={() => setOpenNailTreatments(true)}
+                        >
+                          View Treatments
+                          <ArrowRight size={16} />
+                        </Button>
+                      )}
+                      {service.id === 36 && (
+                        <Button
+                          variant="hero"
+                          onClick={() => setOpenFacialTreatments(true)}
+                        >
+                          View Treatments
+                          <ArrowRight size={16} />
+                        </Button>
+                      )}
+                      {service.id === 38 && (
+                        <Button
+                          variant="hero"
+                          onClick={() => setOpenWaxingTreatments(true)}
+                        >
+                          View Treatments
+                          <ArrowRight size={16} />
+                        </Button>
+                      )}
+                      {service.id === 39 && (
+                        <Button
+                          variant="hero"
+                          onClick={() => setOpenIvTreatments(true)}
+                        >
+                          View Treatments
+                          <ArrowRight size={16} />
+                        </Button>
+                      )}
+
+                      <Button asChild variant="hero">
+                        <Link to="/contact">
+                          Book This Service
+                          <ArrowRight size={18} />
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
-
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

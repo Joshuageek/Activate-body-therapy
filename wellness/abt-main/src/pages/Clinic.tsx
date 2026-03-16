@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { slugify } from "@/lib/utils";
 import clinicHero from "@/assets/clinic-hero.jpg";
 import {
   Activity,
@@ -143,6 +144,25 @@ const clinicServices = [
 ];
 
 
+const SERVICE_ANCHORS: Record<string, string> = {
+  "Physiotherapy": "physiotherapy",
+  "Neuromuscular Therapy": "neuromuscular-pain-management-therapy",
+  "Rehabilitation & Exercise Therapy": "rehabilitation-exercise-therapy",
+  "Sports Therapy": "sports-therapy",
+  "Weight Management": "weight-management",
+  "Chiropractic Services": "chiropractic-services",
+  "Acupuncture & Dry Needling": "acupuncture-dry-needling",
+  "IV Therapy": "iv-therapy",
+  "Deep Tissue Therapy": "deep-tissue-massage",
+  "Prenatal Therapy": "prenatal-therapy",
+  "Postnatal Therapy": "postnatal-therapy",
+};
+
+const getServiceAnchor = (title: string) => {
+  const anchor = SERVICE_ANCHORS[title];
+  return anchor ? `/services#${anchor}` : "/services";
+};
+
 const Clinic = () => {
   return (
     <Layout>
@@ -257,7 +277,7 @@ const Clinic = () => {
 
                   <div className="mt-auto flex justify-center">
                     <Button asChild className="w-32 h-12 bg-usawa-green text-white">
-                      <Link to="/services">Learn More</Link>
+                        <Link to={getServiceAnchor(service.title)}>Learn More</Link>
                     </Button>
                   </div>
                 </div>

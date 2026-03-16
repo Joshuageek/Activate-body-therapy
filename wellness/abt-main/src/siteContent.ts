@@ -23,11 +23,11 @@ ABOUT US - DETAILED COMPANY INFORMATION
 ====================================================================================================
 
 COMPANY HISTORY:
-Founded in 2009 by Dr. Sarah Mitchell with a simple yet powerful mission: to provide exceptional therapeutic care that addresses the root causes of pain and discomfort, not just the symptoms.
+Founded in 2009 by Mr. Ismail and Mrs. Cindie-Ann Sina with a simple yet powerful mission: to provide exceptional therapeutic care that addresses the root causes of pain and discomfort, not just the symptoms.
 
 What started as a small practice has grown into a trusted wellness destination, serving thousands of clients from professional athletes to busy professionals, new mothers to seniors.
 
-Today, our team of certified therapists continues to uphold Dr. Mitchell's founding principles: personalized care, clinical excellence, and a genuine commitment to each client's wellness journey.
+Today, our team of certified therapists continues to uphold the founding principles: personalized care, clinical excellence, and a genuine commitment to each client's wellness journey.
 
 CORE VALUES:
 1. Compassionate Care - Every treatment is delivered with genuine care and attention to your wellbeing.

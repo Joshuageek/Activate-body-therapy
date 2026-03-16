@@ -3,24 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { searchableContent, SearchResult } from "@/components/Searchbar";
 import logo from "/logo.svg";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-interface SearchResult {
-  title: string;
-  description: string;
-  path: string;
-  keywords: string[];
-}
-
-const searchableContent: SearchResult[] = [
-  { title: "Deep Tissue Massage", description: "Target chronic muscle tension", path: "/services", keywords: ["massage", "pain"] },
-  { title: "Sports Therapy", description: "Performance & recovery", path: "/services", keywords: ["sports", "injury"] },
-  { title: "Health Club", description: "Gym, pool & spa", path: "/health-club", keywords: ["gym", "fitness"] },
-  { title: "Products", description: "Wellness products", path: "/products", keywords: ["oil", "balm"] },
-  { title: "Usawa Café", description: "Healthy food & drinks", path: "/usawa", keywords: ["food", "cafe"] },
-];
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -71,6 +57,13 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  const clearSearch = () => {
+    setQuery("");
+    setResults([]);
+    setIsSearchOpen(false);
+    inputRef.current?.focus();
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowDown") {
       setSelectedIndex((i) => Math.min(i + 1, results.length - 1));
@@ -90,7 +83,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <img src={logo} alt="Activate Body Therapy" className="h-12 w-auto" />
+            <img src={logo} alt="Activate Body Therapy" loading="lazy" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
@@ -131,21 +124,33 @@ const Header = () => {
                     className="absolute top-full right-0 mt-2 w-80 bg-card border rounded-xl shadow-lg overflow-hidden z-50"
                   >
                     <div className="p-3 border-b">
-                      <Input
-                        ref={inputRef}
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                        placeholder="Search services, products..."
-                        autoFocus
-                      />
+                      <div className="relative">
+                        <Input
+                          ref={inputRef}
+                          value={query}
+                          onChange={(e) => setQuery(e.target.value)}
+                          onKeyDown={handleKeyDown}
+                          placeholder="Search services, products, menu..."
+                          autoFocus
+                          className="pr-10"
+                        />
+
+                        {query && (
+                          <button
+                            onClick={clearSearch}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+                        )}
+                      </div>
                     </div>
 
                     {results.length > 0 && (
                       <div className="max-h-72 overflow-y-auto p-2">
                         {results.map((r, i) => (
                           <button
-                            key={r.title}
+                            key={`${r.title}-${i}`}
                             onClick={() => {
                               navigate(r.path);
                               setIsSearchOpen(false);
@@ -155,8 +160,18 @@ const Header = () => {
                               selectedIndex === i && "bg-accent"
                             )}
                           >
-                            <p className="text-sm font-medium">{r.title}</p>
-                            <p className="text-xs text-muted-foreground">{r.description}</p>
+                            <div className="flex items-start justify-between gap-2">
+                              <div>
+                                <p className="font-medium text-foreground">{r.title}</p>
+                                <p className="text-sm text-muted-foreground line-clamp-1">
+                                  {r.description}
+                                </p>
+                              </div>
+
+                              <span className="text-xs px-2 py-1 bg-muted rounded-full text-muted-foreground whitespace-nowrap">
+                                {r.category}
+                              </span>
+                            </div>
                           </button>
                         ))}
                       </div>

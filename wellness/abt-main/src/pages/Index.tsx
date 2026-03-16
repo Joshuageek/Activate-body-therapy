@@ -298,6 +298,7 @@ const Index = () => {
                 <img
                   src={therapySession}
                   alt="Professional therapy session"
+                  loading="lazy"
                   className="w-full h-[500px] object-cover"
                 />
               </div>
@@ -407,6 +408,7 @@ const Index = () => {
           <img
             src={massageHands}
             alt="Healing massage therapy"
+            loading="lazy"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/30" />
@@ -473,6 +475,7 @@ const Index = () => {
               <img
                 src={logo}
                 alt="Partner logo"
+                loading="lazy"
                 className="max-h-full max-w-full object-contain"
               />
             </div>

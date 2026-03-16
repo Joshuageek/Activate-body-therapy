@@ -23,6 +23,7 @@ export default function HeroImageFanMobile() {
           <img
             src={card.image}
             alt=""
+            loading="lazy"
             className="w-full h-full object-cover"
           />
 

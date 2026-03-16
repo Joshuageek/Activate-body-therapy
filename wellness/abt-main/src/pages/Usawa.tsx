@@ -254,6 +254,7 @@ const MenuCard = ({
         <img
           src={item.image}
           alt={item.name}
+          loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
@@ -362,6 +363,7 @@ const Usawa = () => {
           <img 
             src={bowlImg} 
             alt="Therapy Session" 
+            loading="lazy"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40" />
@@ -372,6 +374,7 @@ const Usawa = () => {
         <img
           src="/images/usawa/usawa.png"
           alt="Usawa Logo"
+          loading="lazy"
           className="h-24 md:h-32 object-contain"
         />
       </div>

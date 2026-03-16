@@ -4,7 +4,7 @@ import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
-interface SearchResult {
+export interface SearchResult {
   title: string;
   description: string;
   category: string;
@@ -12,7 +12,7 @@ interface SearchResult {
   keywords: string[];
 }
 
-const searchableContent: SearchResult[] = [
+export const searchableContent: SearchResult[] = [
   // Services
   {
     title: "Deep Tissue Massage",
@@ -56,6 +56,195 @@ const searchableContent: SearchResult[] = [
     path: "/services",
     keywords: ["prenatal", "pregnancy", "expecting", "mother", "baby"],
   },
+  {
+    title: "Neuromuscular Therapy",
+    description: "Addresses chronic muscular and nervous system conditions",
+    category: "Services",
+    path: "/services",
+    keywords: ["neuromuscular", "pain management", "muscle", "nervous", "chronic", "therapy"],
+  },
+  {
+    title: "Physiotherapy",
+    description: "Restores movement and physical function",
+    category: "Services",
+    path: "/services",
+    keywords: ["physiotherapy", "movement", "function", "injury", "illness", "disability"],
+  },
+  {
+    title: "Chiropractic Services",
+    description: "Improves spinal alignment and joint mobility",
+    category: "Services",
+    path: "/services",
+    keywords: ["chiropractic", "spinal", "alignment", "joint", "mobility", "posture"],
+  },
+  {
+    title: "Rehabilitation & Exercise Therapy",
+    description: "Restores physical function following injury",
+    category: "Services",
+    path: "/services",
+    keywords: ["rehabilitation", "exercise therapy", "injury", "mobility", "strength"],
+  },
+  {
+    title: "Acupuncture & Dry Needling",
+    description: "Effective techniques for pain management",
+    category: "Services",
+    path: "/services",
+    keywords: ["acupuncture", "dry needling", "pain", "relief", "headache", "inflammation"],
+  },
+  {
+    title: "IV Therapy",
+    description: "Delivers essential vitamins and minerals directly into bloodstream",
+    category: "Services",
+    path: "/services",
+    keywords: ["iv therapy", "vitamins", "minerals", "hydration", "energy", "immunity"],
+  },
+  {
+    title: "Weight Management",
+    description: "Holistic approach to sustainable weight management",
+    category: "Services",
+    path: "/services",
+    keywords: ["weight management", "nutrition", "exercise", "lifestyle", "health"],
+  },
+  {
+    title: "Aromatherapy Massage",
+    description: "Clinically informed treatment using therapeutic essential oils",
+    category: "Services",
+    path: "/services",
+    keywords: ["aromatherapy", "massage", "essential oils", "relaxation", "stress"],
+  },
+  {
+    title: "Therapeutic Massage",
+    description: "Personalized clinical massage combining advanced techniques",
+    category: "Services",
+    path: "/services",
+    keywords: ["therapeutic massage", "pain relief", "alignment", "clinical"],
+  },
+  {
+    title: "Body Scrub",
+    description: "Professional exfoliation treatment for improved skin texture",
+    category: "Services",
+    path: "/services",
+    keywords: ["body scrub", "exfoliation", "skin", "texture", "circulation"],
+  },
+  {
+    title: "Reflexology",
+    description: "Specialized therapy applying pressure to reflex points on feet",
+    category: "Services",
+    path: "/services",
+    keywords: ["reflexology", "feet", "reflex points", "nervous system", "balance"],
+  },
+  {
+    title: "Head & Shoulder Therapy",
+    description: "Focused treatment for neck, shoulders, and scalp tension",
+    category: "Services",
+    path: "/services",
+    keywords: ["head", "shoulder", "therapy", "neck", "tension", "headache"],
+  },
+  {
+    title: "Activate Signature Treatment",
+    description: "Exclusive experience combining massage, exfoliation, and facial",
+    category: "Services",
+    path: "/services",
+    keywords: ["signature treatment", "luxury", "massage", "facial", "exfoliation"],
+  },
+  {
+    title: "Postnatal Therapy",
+    description: "Restorative therapy supporting recovery after childbirth",
+    category: "Services",
+    path: "/services",
+    keywords: ["postnatal", "postpartum", "recovery", "childbirth", "strength"],
+  },
+  {
+    title: "Uterine Therapy",
+    description: "Focused abdominal treatment for uterine wellness",
+    category: "Services",
+    path: "/services",
+    keywords: ["uterine", "abdominal", "wellness", "circulation", "hormonal"],
+  },
+  {
+    title: "Mizan Fertility Therapy",
+    description: "Holistic treatment supporting reproductive health",
+    category: "Services",
+    path: "/services",
+    keywords: ["fertility", "reproductive", "pelvic", "circulation", "hormonal"],
+  },
+  {
+    title: "Age-Defying Facial",
+    description: "Anti-aging treatment to soften fine lines and improve elasticity",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "age-defying", "anti-aging", "fine lines", "elasticity"],
+  },
+  {
+    title: "Acne Clearing Facial",
+    description: "Therapeutic facial for acne-prone skin",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "acne", "clearing", "congested", "oil", "pores"],
+  },
+  {
+    title: "Signature Facial",
+    description: "Premium customized facial for unique skin needs",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "signature", "customized", "cleansing", "exfoliation"],
+  },
+  {
+    title: "Skin Brightening Facial",
+    description: "Corrective facial reducing pigmentation and dullness",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "brightening", "pigmentation", "dullness", "tone"],
+  },
+  {
+    title: "Regeneration Facial",
+    description: "Restorative treatment for skin repair and renewal",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "regeneration", "repair", "renewal", "stressed skin"],
+  },
+  {
+    title: "Miracle Lifting Facial",
+    description: "Advanced firming and lifting facial",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "lifting", "firming", "tone", "elasticity", "contours"],
+  },
+  {
+    title: "Gold Mask Facial",
+    description: "Luxurious facial with 24K gold-infused masks",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "gold mask", "luxury", "nourish", "rejuvenate"],
+  },
+  {
+    title: "Sensitive Skin Facial",
+    description: "Gentle calming facial for delicate skin",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "sensitive", "calming", "redness", "irritation"],
+  },
+  {
+    title: "Hydrating Facial",
+    description: "Deeply moisturizing treatment for dehydrated skin",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "hydrating", "moisture", "dehydrated", "softness"],
+  },
+  {
+    title: "Calming Facial",
+    description: "Soothing facial for stress-related skin concerns",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "calming", "stress", "relaxation", "soothing"],
+  },
+  {
+    title: "Mini Facial",
+    description: "Quick effective facial for maintenance",
+    category: "Services",
+    path: "/services",
+    keywords: ["facial", "mini", "quick", "maintenance", "cleansing"],
+  },
   // Products
   {
     title: "Therapeutic Massage Oil",
@@ -84,6 +273,27 @@ const searchableContent: SearchResult[] = [
     category: "Products",
     path: "/products",
     keywords: ["balm", "pain relief", "arnica", "CBD", "natural"],
+  },
+  {
+    title: "Hot Stone Home Kit",
+    description: "Basalt stone set for authentic hot stone therapy at home",
+    category: "Products",
+    path: "/products",
+    keywords: ["hot stone", "kit", "basalt", "home therapy", "stones"],
+  },
+  {
+    title: "Wellness Gift Box",
+    description: "Curated gift set with massage oil, candle, eye mask, and tea",
+    category: "Products",
+    path: "/products",
+    keywords: ["gift box", "wellness", "massage oil", "candle", "tea"],
+  },
+  {
+    title: "Posture Correction Cushion",
+    description: "Ergonomic memory foam cushion for better posture",
+    category: "Products",
+    path: "/products",
+    keywords: ["cushion", "posture", "ergonomic", "memory foam", "back pain"],
   },
   // Pages
   {
@@ -149,6 +359,181 @@ const searchableContent: SearchResult[] = [
     category: "Usawa Menu",
     path: "/usawa",
     keywords: ["salad", "bowl", "quinoa", "buddha bowl", "healthy", "vegetables"],
+  },
+  {
+    title: "Buttermilk Pancakes",
+    description: "Choice of banana, blueberry or choco chip with mascarpone cream and syrup",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["pancakes", "buttermilk", "banana", "blueberry", "choco chip", "breakfast"],
+  },
+  {
+    title: "Waffles",
+    description: "Dusted with powdered sugar, served with berries, cream and syrup",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["waffles", "powdered sugar", "berries", "cream", "syrup", "breakfast"],
+  },
+  {
+    title: "Activate Breakfast",
+    description: "Scrambled or poached eggs, avocado & toast",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["activate breakfast", "eggs", "avocado", "toast", "breakfast"],
+  },
+  {
+    title: "Eggs Benedict",
+    description: "Poached eggs, bacon, hollandaise sauce & toast",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["eggs benedict", "poached eggs", "bacon", "hollandaise", "toast", "breakfast"],
+  },
+  {
+    title: "Full English",
+    description: "Eggs, beans, sausage, mushrooms, spinach and toast",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["full english", "eggs", "beans", "sausage", "mushrooms", "spinach", "breakfast"],
+  },
+  {
+    title: "Eggs Norwegian",
+    description: "Poached eggs, smoked salmon, hollandaise sauce & toast",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["eggs norwegian", "poached eggs", "smoked salmon", "hollandaise", "toast", "breakfast"],
+  },
+  {
+    title: "Pita Nachos",
+    description: "Served with hummus and guacamole",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["pita nachos", "hummus", "guacamole", "pool bites", "snack"],
+  },
+  {
+    title: "Veggie Wrap",
+    description: "Whole grain wrap with hummus, cucumber, carrots and halloumi cheese",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["veggie wrap", "whole grain", "hummus", "cucumber", "carrots", "halloumi", "pool bites"],
+  },
+  {
+    title: "Chicken Wrap",
+    description: "Whole grain wrap with chicken, hummus, cucumber, carrots and halloumi",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["chicken wrap", "whole grain", "chicken", "hummus", "cucumber", "carrots", "halloumi", "pool bites"],
+  },
+  {
+    title: "DIY Sandwich",
+    description: "Choice of grilled chicken, roast beef or fried egg with various toppings",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["diy sandwich", "grilled chicken", "roast beef", "fried egg", "pool bites"],
+  },
+  {
+    title: "Smoked Salmon DIY Sandwich",
+    description: "Premium smoked salmon sandwich with choice toppings",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["smoked salmon", "diy sandwich", "premium", "pool bites"],
+  },
+  {
+    title: "Activate Body Burger",
+    description: "Choice of beef or grilled herb chicken with cheese, bacon or fried egg",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["burger", "beef", "grilled chicken", "cheese", "bacon", "fried egg", "pool bites"],
+  },
+  {
+    title: "Chicken Tenders",
+    description: "Juicy chicken breast strips with crispy coating",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["chicken tenders", "juicy", "crispy", "pool bites"],
+  },
+  {
+    title: "Chicken Wings",
+    description: "Marinated with homemade BBQ sauce",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["chicken wings", "bbq sauce", "marinated", "pool bites"],
+  },
+  {
+    title: "Nile Goujons",
+    description: "Nile perch fillets in crispy breadcrumbs",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["nile goujons", "perch", "crispy", "breadcrumbs", "pool bites"],
+  },
+  {
+    title: "The Classic Club",
+    description: "Crisp lettuce, tomatoes, cheese, chicken, bacon, fried egg on choice bread",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["classic club", "lettuce", "tomatoes", "cheese", "chicken", "bacon", "fried egg", "pool bites"],
+  },
+  {
+    title: "Flatbread",
+    description: "Comes with any two toppings",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["flatbread", "toppings", "pool bites"],
+  },
+  {
+    title: "Pizza",
+    description: "Comes with any two toppings",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["pizza", "toppings", "pool bites"],
+  },
+  {
+    title: "Protein Power Bowl",
+    description: "Tofu or grilled chicken, quinoa salad with vegetables and lemon vinaigrette",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["protein power bowl", "tofu", "chicken", "quinoa", "vegetables", "salad"],
+  },
+  {
+    title: "Mediterranean Bowl",
+    description: "Mediterranean quinoa salad with tomatoes, cucumber, olives and feta",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["mediterranean bowl", "quinoa", "tomatoes", "cucumber", "olives", "feta", "salad"],
+  },
+  {
+    title: "Fruit Bowl",
+    description: "Fresh seasonal fruits",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["fruit bowl", "fresh", "seasonal", "fruits", "healthy bowl"],
+  },
+  {
+    title: "Yoghurt and Fruit Bowl",
+    description: "Greek yoghurt with fruit and fresh berries",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["yoghurt", "fruit bowl", "greek yoghurt", "berries", "healthy bowl"],
+  },
+  {
+    title: "Muesli Bowl",
+    description: "Yoghurt, muesli, fruits, orange, green apple and oats",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["muesli bowl", "yoghurt", "muesli", "fruits", "oats", "healthy bowl"],
+  },
+  {
+    title: "Banana Oats Bowl",
+    description: "Oats, banana and chopped almonds with forest honey",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["banana oats bowl", "oats", "banana", "almonds", "honey", "healthy bowl"],
+  },
+  {
+    title: "Smoothie Bowl",
+    description: "Thick smoothie topped with fruits and nuts",
+    category: "Usawa Menu",
+    path: "/usawa",
+    keywords: ["smoothie bowl", "thick smoothie", "fruits", "nuts", "healthy bowl"],
   },
 ];
 
@@ -297,4 +682,5 @@ const SearchBar = () => {
   );
 };
 
+export type { SearchResult };
 export default SearchBar;

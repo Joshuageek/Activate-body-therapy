@@ -15,6 +15,7 @@ const Footer = () => {
       <img 
         src={logo} 
         alt="Activate Body Logo" 
+        loading="lazy"
         className="w-full h-full object-contain"
       />
     </div>

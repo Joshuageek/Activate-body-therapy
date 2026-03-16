@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { slugify } from "@/lib/utils";
 import healthclubHero from "@/assets/healthclub-hero.jpg";
 
 /* ================= SERVICE IMAGES ================= */
@@ -16,6 +17,21 @@ import gym1Img from "@/assets/gym1.jpg";
 import { Calendar, Check, Phone } from "lucide-react";
 
 /* ================= SERVICES ================= */
+const SERVICE_ANCHORS: Record<string, string> = {
+  "IV Treatments": "iv-therapy",
+  "Nutrition & Lifestyle Support": "weight-management",
+  "Fitness & Movement Classes": "sports-therapy",
+  "Spa & Recovery Treatments": "deep-tissue-massage",
+  "Personal Training": "rehabilitation-exercise-therapy",
+};
+
+const getServiceAnchor = (title: string) => {
+  if (title === "Membership Packages") return "/membership";
+
+  const anchor = SERVICE_ANCHORS[title];
+  return anchor ? `/services#${anchor}` : "/services";
+};
+
 const healthClubServices = [
   {
   id: 2,
@@ -305,7 +321,7 @@ const HealthClub = () => {
                   <h3 className="font-serif text-xl font-semibold text-white mb-3">{service.title}</h3>
                   
                   {/* Small spacer to push buttons down slightly */}
-                  <div className="h-[400px]" />
+                  <div className="h-[350px]" />
 
                   <div className="mt-auto flex justify-center gap-4">
                     {/* Join Now */}
@@ -321,7 +337,7 @@ const HealthClub = () => {
                       asChild
                       className="w-32 h-12 bg-usawa-green/70 hover:bg-usawa-green text-white"
                     >
-                      <Link to="/services">Learn More</Link>
+                      <Link to={getServiceAnchor(service.title)}>Learn More</Link>
                     </Button>
                   </div>
                   </div>
