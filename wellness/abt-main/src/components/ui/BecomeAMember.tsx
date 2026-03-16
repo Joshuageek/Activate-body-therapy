@@ -15,7 +15,7 @@ const BecomeAMember = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-[100]">
-      <div className="relative w-20 h-20">
+      <div className="relative w-16 h-16 md:w-20 md:h-20">
         {/* Outer pulse ring */}
         <span
           className="
@@ -34,7 +34,7 @@ const BecomeAMember = () => {
           className="
             relative z-10
             flex flex-col items-center justify-center
-            w-20 h-20
+            w-16 h-16 md:w-20 md:h-20
             rounded-full
             bg-usawa-green-soft/20
             backdrop-blur-md
