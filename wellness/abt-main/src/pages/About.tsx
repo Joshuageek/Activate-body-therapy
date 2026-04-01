@@ -100,22 +100,23 @@ const TeamMemberCard = ({ member }: { member: any }) => {
   return (
     <>
       {/* Card */}
-      <div className="bg-card rounded-2xl overflow-hidden shadow-soft group opacity-0 animate-fade-in">
-       <div className="relative w-full h-64 overflow-hidden bg-muted">
+      <div className="bg-gradient-to-br from-usawa-green/10 via-white to-usawa-green/5 rounded-3xl overflow-hidden border border-usawa-green/30 shadow-2xl group opacity-0 animate-fade-in">
+       <div className="relative w-full h-72 overflow-hidden rounded-t-3xl bg-muted shadow-inner">
         <img
           src={member.image}
           alt={member.name}
           loading="lazy"
           className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
         />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
 
-        <div className="p-6">
-          <h3 className="text-2xl font-priestacy text-foreground mb-1 leading-tight">
+        <div className="p-6 bg-white/70 backdrop-blur-md">
+          <h3 className="text-3xl md:text-3xl font-priestacy text-warm-gray text-center mb-1 leading-tight">
             {member.name}
           </h3>
-          <p className="text-sm text-primary font-medium mb-3">{member.role}</p>
+          <p className="text-sm md:text-base text-primary font-semibold text-center mb-4 tracking-wide">{member.role}</p>
 
           <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
             {member.bio}
@@ -130,11 +131,11 @@ const TeamMemberCard = ({ member }: { member: any }) => {
             </button>
           )}
 
-          <div className="flex flex-wrap gap-2 mt-3">
+          <div className="flex flex-wrap gap-2 mt-3 justify-center">
             {member.specialties.map((specialty: string) => (
               <span
                 key={specialty}
-                className="px-3 py-1 bg-muted rounded-full text-xs text-muted-foreground"
+                className="px-4 py-1.5 bg-usawa-green/10 text-usawa-green font-semibold text-xs rounded-full border border-usawa-green/25"
               >
                 {specialty}
               </span>
@@ -293,22 +294,16 @@ const About = () => {
       </p>
     </div>
 
-   {/* TOP ROW – FIRST 2 (Centered, Default Card Size) */}
-<div className="flex justify-center gap-8 mb-12 flex-wrap">
+   {/* Featured Founders - only first 2 prepended with premium style */}
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 justify-center">
   {team.slice(0, 2).map((member) => (
-    <div key={member.name} className="w-[260px]"> {/* Set fixed width same as bottom cards */}
+    <div key={member.name} className="mx-auto w-full max-w-[420px] transform transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl">
       <TeamMemberCard member={member} />
     </div>
   ))}
 </div>
 
-
-    {/* BOTTOM ROW – REMAINING 4 */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      {team.slice(2).map((member) => (
-        <TeamMemberCard key={member.name} member={member} />
-      ))}
-    </div>
+    {/* (Other team members are excluded to focus on founders.) */}
   </div>
 </section>
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { toast } from "@/hooks/use-toast";
-import { Plus, ShoppingCart } from "lucide-react";
+import { Plus, ShoppingCart, X, Trash2, Check } from "lucide-react";
 import deepTissueImg from "/activate-body-burger.jpg";
 import bowlImg from "/bowl.jpg";
 
@@ -335,7 +335,19 @@ const Usawa = () => {
     toast({
       title: "Added to order",
       description: `${item.name} has been added to your order.`,
+      className: "bg-gradient-to-r from-usawa-green to-emerald-500 text-white border-0 shadow-2xl",
     });
+  };
+
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => {
+      const price = parseInt(item.price.replace(/[^0-9]/g, ''));
+      return total + (price * item.quantity);
+    }, 0);
+  };
+
+  const formatPrice = (price: number) => {
+    return price.toLocaleString('en-UG') + ' UGX';
   };
 
   // Create WhatsApp order message
@@ -357,32 +369,55 @@ const Usawa = () => {
     <Layout>
 
   {/* Hero Section */}
-      <section className="relative py-32 md:py-48 overflow-hidden">
+      <section className="relative py-28 md:py-36 overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <img 
             src={bowlImg} 
-            alt="Therapy Session" 
+            alt="Usawa Premium Cuisine" 
             loading="lazy"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
         </div>
+
+      {/* Top design flourishes */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -left-20 top-16 w-72 h-72 bg-gradient-to-r from-[#a3ffb0]/40 to-transparent rounded-full blur-3xl" />
+        <div className="absolute right-0 top-32 w-96 h-96 bg-gradient-to-l from-[#2db7ff]/25 to-transparent rounded-full blur-3xl" />
+      </div>
+
     {/* Content */}
-    <div className="relative container mx-auto px-4 py-20 text-center mb-6">
+    <div className="relative container mx-auto px-4 text-center text-white z-10">
       <div className="flex justify-center mb-6">
         <img
           src="/images/usawa/usawa.png"
           alt="Usawa Logo"
           loading="lazy"
-          className="h-24 md:h-32 object-contain"
+          className="h-20 md:h-28 object-contain drop-shadow-xl"
         />
       </div>
 
-      <p className="text-white/80 text-lg max-w-2xl mx-auto mb-6 drop-shadow-lg">
-        Nourish your body with our carefully crafted menu of healthy foods
-        and refreshing drinks.
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-extrabold leading-tight drop-shadow-2xl">
+        Usawa Cafe
+        <br />
+        Premium Health & Wellness Dining
+      </h1>
+
+      <p className="text-white/80 text-base md:text-lg max-w-3xl mx-auto my-6 leading-relaxed drop-shadow-lg">
+        Experience a curated menu crafted for body balance and mindful indulgence.
+        Fresh, nutrient-rich foods + restorative flavors served in an elegant atmosphere.
       </p>
+
+      <div className="h-8" />
+
+      <div className="flex flex-wrap justify-center gap-4 text-sm text-white/90">
+        <span className="px-4 py-2 bg-black/35 rounded-full border border-white/25">Chef Expertise</span>
+        <span className="px-4 py-2 bg-black/35 rounded-full border border-white/25">Organic Ingredients</span>
+        <span className="px-4 py-2 bg-black/35 rounded-full border border-white/25">Nutritional Balance</span>
+        <span className="px-4 py-2 bg-black/35 rounded-full border border-white/25">Luxury Atmosphere</span>
+      </div>
     </div>
   </section>
 
@@ -421,96 +456,166 @@ const Usawa = () => {
       />
     ))}
   </div>
-  {/* CART BUTTON */}
+  {/* CART BUTTON - PREMIUM */}
 <div className="fixed bottom-6 right-6 z-50">
+  <style>{`
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(34, 216, 192, 0.6); }
+      50% { box-shadow: 0 0 30px rgba(20, 236, 189, 0.8); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scale-in {
+      from { transform: scale(0.3); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .cart-button {
+      animation: ${cart.length > 0 ? 'pulse-glow 2s infinite' : 'none'};
+    }
+    .cart-panel {
+      animation: slide-up 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .badge-count {
+      animation: scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  `}</style>
+  
   <button
     onClick={() => setIsCartOpen(!isCartOpen)}
-    className="relative flex items-center justify-center w-14 h-14 rounded-full bg-usawa-green text-white shadow-lg hover:bg-usawa-green/90 transition-all"
+    className="cart-button relative flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-usawa-green to-emerald-500 text-white shadow-2xl hover:shadow-3xl hover:scale-110 transition-all duration-300 active:scale-95"
   >
-    <ShoppingCart className="w-6 h-6" />
+    <ShoppingCart className="w-7 h-7" />
     {cart.length > 0 && (
-      <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold flex items-center justify-center rounded-full">
-        {cart.reduce((acc, item) => acc + item.quantity, 0)}
+      <span className="badge-count absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-br from-red-500 to-orange-500 text-white text-xs font-bold flex items-center justify-center rounded-full shadow-lg">
+        {Math.min(cart.reduce((acc, item) => acc + item.quantity, 0), 99)}
       </span>
     )}
   </button>
 
-  {/* CART DROPDOWN */}
+  {/* CART PANEL - PREMIUM */}
   {isCartOpen && (
-    <div className="absolute bottom-16 right-0 w-80 max-h-96 overflow-y-auto bg-white border border-gray-200 rounded-xl shadow-lg p-4">
-      {/* CLOSE BUTTON */}
-      <div className="flex justify-between items-center mb-3">
-        <h4 className="font-semibold text-usawa-green text-lg">Your Order</h4>
+    <div className="cart-panel absolute bottom-20 right-0 w-96 max-h-[500px] bg-white/95 backdrop-blur-md border border-gray-200/50 rounded-3xl shadow-2xl p-6 overflow-hidden flex flex-col">
+      {/* HEADER */}
+      <div className="flex justify-between items-center mb-6 pb-4 border-b-2 border-gray-100">
+        <div>
+          <h4 className="font-bold text-usawa-green text-xl">Your Order</h4>
+          <p className="text-xs text-gray-500 mt-1">{cart.length} items</p>
+        </div>
         <button
           onClick={() => setIsCartOpen(false)}
-          className="text-gray-500 hover:text-red-500 font-bold text-lg"
+          className="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 hover:scale-110"
         >
-          ✕
+          <X className="w-5 h-5 text-gray-600" />
         </button>
       </div>
 
-      {/* WhatsApp Number */}
-      <p className="text-xs text-gray-400 mb-2">
-        Orders will be sent to WhatsApp: <span className="font-medium">+256756735682</span>
-      </p>
-
       {cart.length === 0 ? (
-        <p className="text-gray-500 text-sm">Your cart is empty.</p>
+        /* EMPTY STATE */
+        <div className="flex flex-col items-center justify-center py-12 text-center">
+          <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mb-4">
+            <ShoppingCart className="w-8 h-8 text-gray-400" />
+          </div>
+          <p className="text-gray-600 font-medium mb-1">Your cart is empty</p>
+          <p className="text-gray-400 text-sm">Add delicious items to get started!</p>
+        </div>
       ) : (
-        <div className="space-y-2">
-          {cart.map((item, index) => (
-            <div
-              key={index}
-              className="flex justify-between items-center border-b border-gray-100 pb-1"
-            >
-              <div>
-                <p className="text-sm font-medium">{item.name}</p>
-                <p className="text-xs text-gray-500">
-                  {item.price} x {item.quantity}
-                </p>
-              </div>
-              <div className="flex items-center space-x-2">
-                <button
-                  onClick={() =>
-                    setCart((prev) =>
-                      prev
-                        .map((i) =>
-                          i.name === item.name
-                            ? { ...i, quantity: i.quantity - 1 }
-                            : i
+        /* CART ITEMS */
+        <>
+          <div className="flex-1 overflow-y-auto pr-2 mb-6 space-y-3">
+            {cart.map((item, index) => {
+              const itemPrice = parseInt(item.price.replace(/[^0-9]/g, ''));
+              const itemTotal = itemPrice * item.quantity;
+              return (
+                <div
+                  key={index}
+                  className="group bg-gradient-to-r from-gray-50 to-gray-100/50 rounded-2xl p-4 hover:from-usawa-green/5 hover:to-emerald-100/30 transition-all duration-200 border border-gray-100/50 hover:border-usawa-green/30"
+                >
+                  <div className="flex justify-between items-start mb-3">
+                    <div className="flex-1">
+                      <p className="font-semibold text-gray-800 text-sm group-hover:text-usawa-green transition-colors">{item.name}</p>
+                      <p className="text-xs text-gray-500 mt-1">{formatPrice(itemTotal)}</p>
+                    </div>
+                    <button
+                      onClick={() =>
+                        setCart((prev) =>
+                          prev.filter((i) => i.name !== item.name)
                         )
-                        .filter((i) => i.quantity > 0)
-                    )
-                  }
-                  className="text-red-500 font-bold w-5 h-5 flex items-center justify-center"
-                >
-                  -
-                </button>
-                <button
-                  onClick={() =>
-                    setCart((prev) =>
-                      prev.map((i) =>
-                        i.name === item.name
-                          ? { ...i, quantity: i.quantity + 1 }
-                          : i
-                      )
-                    )
-                  }
-                  className="text-green-500 font-bold w-5 h-5 flex items-center justify-center"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          ))}
+                      }
+                      className="ml-2 p-1.5 hover:bg-red-100 rounded-lg transition-all opacity-0 group-hover:opacity-100"
+                    >
+                      <Trash2 className="w-4 h-4 text-red-500" />
+                    </button>
+                  </div>
+                  <div className="flex items-center justify-between bg-white rounded-xl p-2 border border-gray-200">
+                    <button
+                      onClick={() =>
+                        setCart((prev) =>
+                          prev
+                            .map((i) =>
+                              i.name === item.name
+                                ? { ...i, quantity: Math.max(0, i.quantity - 1) }
+                                : i
+                            )
+                            .filter((i) => i.quantity > 0)
+                        )
+                      }
+                      className="w-6 h-6 flex items-center justify-center text-red-500 hover:bg-red-100 rounded-lg transition-all font-bold"
+                    >
+                      −
+                    </button>
+                    <span className="font-bold text-gray-800 text-sm w-8 text-center">{item.quantity}</span>
+                    <button
+                      onClick={() =>
+                        setCart((prev) =>
+                          prev.map((i) =>
+                            i.name === item.name
+                              ? { ...i, quantity: i.quantity + 1 }
+                              : i
+                          )
+                        )
+                      }
+                      className="w-6 h-6 flex items-center justify-center text-usawa-green hover:bg-green-100 rounded-lg transition-all font-bold"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
+          {/* TOTAL SECTION */}
+          <div className="bg-gradient-to-r from-usawa-green/10 to-emerald-100/30 rounded-2xl p-4 mb-4 border border-usawa-green/20">
+            <div className="flex justify-between items-center mb-3 pb-3 border-b border-usawa-green/20">
+              <span className="text-gray-700 font-medium">Subtotal</span>
+              <span className="text-gray-800 font-bold">{formatPrice(calculateTotal())}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-usawa-green font-bold text-lg">Total Order</span>
+              <span className="text-usawa-green font-bold text-2xl">{formatPrice(calculateTotal())}</span>
+            </div>
+          </div>
+
+          {/* WHATSAPP INFO */}
+          <p className="text-xs text-gray-500 mb-4 p-3 bg-blue-50 rounded-xl border border-blue-100">
+            📱 Order will be sent to WhatsApp:<br/><span className="font-bold text-blue-600 text-sm">+256756735682</span>
+          </p>
+
+          {/* CHECKOUT BUTTON */}
           <button
             onClick={checkoutToWhatsapp}
-            className="mt-3 w-full py-2 bg-usawa-green text-white font-medium rounded-full hover:bg-usawa-green/90 transition-all"
+            className="w-full py-3 bg-gradient-to-r from-usawa-green to-emerald-500 text-white font-bold rounded-2xl hover:shadow-xl hover:from-usawa-green/90 hover:to-emerald-600 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 group"
           >
+            <Check className="w-5 h-5 group-hover:scale-110 transition-transform" />
             Checkout via WhatsApp
           </button>
-        </div>
+        </>
       )}
     </div>
   )}

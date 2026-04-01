@@ -64,7 +64,7 @@ const breathingStyle = {
   animation: 'breathe 6s ease-in-out infinite'
 };
 
-const services = [
+export const services = [
   {
     id: 4,
     title: "Neuromuscular (Pain Management) Therapy",

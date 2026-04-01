@@ -14,6 +14,7 @@ import {
 import { Phone, Mail, MapPin, Clock, Send, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/layout/Layout";
+import { services as servicesData } from "@/pages/Services";
 
 const contactInfo = [
   {
@@ -42,13 +43,9 @@ const contactInfo = [
   },
 ];
 
-const services = [
-  "Deep Tissue Massage",
-  "Sports Therapy",
-  "Swedish Relaxation",
-  "Physical Rehabilitation",
-  "Hot Stone Therapy",
-  "Prenatal Massage",
+const serviceOptions = [
+  ...servicesData.map((service) => service.title),
+  ...servicesData.flatMap((service) => service.treatments?.map((t) => t.title) ?? []),
   "Other",
 ];
 
@@ -68,13 +65,16 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const whatsappNumber = "256708661166";
+    const text = `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService: ${formData.service}\nPreferred date: ${formData.date}\nMessage: ${formData.message}`;
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+    window.open(whatsappUrl, "_blank");
 
     toast({
-      title: "Booking Request Received!",
-      description:
-        "Thank you for your inquiry. We'll get back to you within 24 hours.",
+      title: "WhatsApp Message Ready",
+      description: "Your request is being sent via WhatsApp. Please complete the chat to confirm.",
     });
 
     setFormData({
@@ -98,18 +98,29 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 bg-muted/50">
-        <div className="container mx-auto px-4">
+      <section className="relative pt-28 pb-32 md:pt-32 md:pb-36 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/contact.jpg"
+            alt="Contact Background"
+            loading="lazy"
+            className="w-full h-full object-cover object-top"
+            style={{ objectPosition: '50% 22%' }}
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+
+        <div className="relative container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block px-4 py-2 bg-accent rounded-full text-sm font-medium text-accent-foreground mb-6">
+            <span className="inline-block px-4 py-2 bg-slate-100/20 backdrop-blur-sm rounded-full text-sm font-medium text-white mb-6">
               Contact Us
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
               Let's Start Your
               <br />
               <span className="text-primary">Wellness Journey</span>
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-white/85 leading-relaxed">
               Ready to feel your best? Get in touch to book an appointment or
               ask any questions. We're here to help you achieve your wellness
               goals.
@@ -156,8 +167,7 @@ const Contact = () => {
                   <h3 className="font-semibold text-usawa-green mb-2">Main Clinic</h3>
                   <div className="rounded-2xl overflow-hidden h-48">
                     <iframe
-                      src="https://maps.google.com/maps?q=0.3304445,32.5792778&z=17&output=embed"
-                      width="100%"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7519282203953!2d32.57928109999999!3d0.33053690000001845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbb05b7f20f4b%3A0xaf090250c1f76c53!2sActivate%20Body%20Therapy!5e0!3m2!1sen!2sug!4v1775048618175!5m2!1sen!2sug"                      width="100%"
                       height="100%"
                       style={{ border: 0 }}
                       allowFullScreen
@@ -172,8 +182,7 @@ const Contact = () => {
                   <h3 className="font-semibold text-usawa-green mb-2">Health Club</h3>
                   <div className="rounded-2xl overflow-hidden h-48">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7577!2d32.5825!3d0.3275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s8JW4%2BHJ%20Kampala%2C%20Uganda!5e0!3m2!1sen!2s!4v1705000000000!5m2!1sen!2s"
-                      width="100%"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15958.994725172324!2d32.5825837673828!3d0.338522953288393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbbf2e1c64e05%3A0x501ff2d1435381df!2sActivate%20Body%20Therapy%20Health%20Club!5e0!3m2!1sen!2sus!4v1775048754391!5m2!1sen!2sus"                      width="100%"
                       height="100%"
                       style={{ border: 0 }}
                       allowFullScreen
@@ -266,7 +275,7 @@ const Contact = () => {
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                        {services.map((service) => (
+                        {serviceOptions.map((service) => (
                           <SelectItem key={service} value={service}>
                             {service}
                           </SelectItem>
