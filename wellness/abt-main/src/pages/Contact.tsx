@@ -15,6 +15,7 @@ import { Phone, Mail, MapPin, Clock, Send, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/layout/Layout";
 import { services as servicesData } from "@/pages/Services";
+import emailjs from '@emailjs/browser';
 
 const contactInfo = [
   {
@@ -57,25 +58,70 @@ const Contact = () => {
     phone: "",
     service: "",
     date: "",
+    location: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.location) {
+      toast({
+        title: "Location Required",
+        description: "Please select a location (Clinic or Health Club).",
+        variant: "destructive",
+      });
+      return;
+    }
     setIsSubmitting(true);
 
-    const whatsappNumber = "256708661166";
-    const text = `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService: ${formData.service}\nPreferred date: ${formData.date}\nMessage: ${formData.message}`;
+    const whatsappNumbers = {
+      clinic: "256708661166",
+      "health club": "256708421449",
+    };
+    const whatsappNumber = whatsappNumbers[formData.location as keyof typeof whatsappNumbers] || "256708661166";
+    const text = `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService: ${formData.service}\nPreferred date: ${formData.date}\nLocation: ${formData.location}\nMessage: ${formData.message}`;
     const encodedText = encodeURIComponent(text);
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
 
     window.open(whatsappUrl, "_blank");
 
-    toast({
-      title: "WhatsApp Message Ready",
-      description: "Your request is being sent via WhatsApp. Please complete the chat to confirm.",
-    });
+    // Send email using EmailJS
+    const emailAddresses = {
+      clinic: "clinicfrontdesk@activatebodytherapy.com",
+      "health club": "healthclubfrontdesk@activatebodytherapy.com",
+    };
+    const toEmail = emailAddresses[formData.location as keyof typeof emailAddresses] || "activatebodytherapy@gmail.com";
+    const templateParams = {
+      to_email: toEmail,
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      service: formData.service,
+      date: formData.date,
+      location: formData.location,
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(
+        'your_service_id', // Replace with your EmailJS service ID
+        'your_template_id', // Replace with your EmailJS template ID
+        templateParams,
+        'your_public_key' // Replace with your EmailJS public key
+      );
+      toast({
+        title: "Booking Request Sent",
+        description: "Your request has been sent via WhatsApp and email successfully.",
+      });
+    } catch (error) {
+      console.error('Email send failed:', error);
+      toast({
+        title: "Email Send Failed",
+        description: "WhatsApp sent, but email failed. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    }
 
     setFormData({
       name: "",
@@ -83,6 +129,7 @@ const Contact = () => {
       phone: "",
       service: "",
       date: "",
+      location: "",
       message: "",
     });
     setIsSubmitting(false);
@@ -285,6 +332,25 @@ const Contact = () => {
                   </div>
 
                   <div className="space-y-2">
+                    <Label htmlFor="location">Choose Location *</Label>
+                    <Select
+                      value={formData.location}
+                      onValueChange={(value) =>
+                        setFormData((prev) => ({ ...prev, location: value }))
+                      }
+                      required
+                    >
+                      <SelectTrigger className="h-12">
+                        <SelectValue placeholder="Select clinic or health club" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="clinic">Clinic</SelectItem>
+                        <SelectItem value="health club">Health Club</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
@@ -335,7 +401,7 @@ const Contact = () => {
               <Button asChild variant="outline" size="lg">
                 <a href="tel:+1234567890">
                   <Phone size={18} />
-                  Call (+256)708-661-166
+                  Call (+256)708-661-166 | (+256) 708 421 449
                 </a>
               </Button>
               <Button asChild variant="ghost" size="lg">

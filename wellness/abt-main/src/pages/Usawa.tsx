@@ -56,7 +56,6 @@ const foodMenu: MenuSection[] = [
       { name: "Beef Bacon", price: "3,000UGX", image: "/images/menu/beef-bacon.jpg" },
       { name: "Mushrooms", price: "3,000UGX", image: "/images/menu/mushrooms.jpg" },
       { name: "Beef Sausages", price: "4,000UGX", image: "/images/menu/beef-sausages.jpg" },
-      { name: "Bacon", price: "4K", image: "/images/menu/bacon.jpg" },
       { name: "Chicken Breast", price: "7,000UGX", image: "/images/menu/chicken-breast.jpg" },
       { name: "Smoked Salmon", price: "8,000UGX", image: "/images/menu/smoked-salmon.jpg" },
     ],
@@ -603,7 +602,7 @@ const Usawa = () => {
 
           {/* WHATSAPP INFO */}
           <p className="text-xs text-gray-500 mb-4 p-3 bg-blue-50 rounded-xl border border-blue-100">
-            📱 Order will be sent to WhatsApp:<br/><span className="font-bold text-blue-600 text-sm">+256756735682</span>
+            📱 Order will be sent to WhatsApp:<br/><span className="font-bold text-blue-600 text-sm">+256763783078</span>
           </p>
 
           {/* CHECKOUT BUTTON */}

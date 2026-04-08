@@ -78,7 +78,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 "Physiotherapy",
-                "Pain Eimination",
+                "Pain Elimination",
                 "Rehabilitation",
                 "Sports Therapy",
                 "Weight Management",

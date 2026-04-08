@@ -211,11 +211,12 @@ export default function ChatWidget() {
           justify-content: center; transition: transform 0.2s ease; z-index: 9999;
         }
         .abt-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 30px hsla(177, 49%, 50%, 0.45); }
-        .abt-kai-face {
-          width: 45px; height: 45px; object-fit: cover;
+        .abt-icon-circle {
+          width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
+          border-radius: 50%; background: hsl(177, 49%, 50%); color: #fff; font-size: 11px;
+          font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
           animation: abt-kai-float 3s ease-in-out infinite;
-          border-radius: 0 !important;
-          border: none !important;
+          box-shadow: 0 14px 32px rgba(0,0,0,0.18);
         }
         @keyframes abt-kai-float {
           0%, 100% { transform: translateY(0px) scale(1); }
@@ -237,9 +238,6 @@ export default function ChatWidget() {
           display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .abt-header-avatar svg { width: 22px; height: 22px; color: #fff; }
-        .abt-header-kai-face {
-          width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
-        }
         .abt-header-text { flex: 1; }
         .abt-header-name {
           font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500;
@@ -323,11 +321,7 @@ export default function ChatWidget() {
           <div className="abt-window">
             <div className="abt-header">
               <div className="abt-header-avatar">
-                <img 
-                  src="/images/Kai.png" 
-                  alt="KAI" 
-                  className="abt-header-kai-face"
-                />
+                <div className="abt-icon-circle">KAI</div>
               </div>
               <div className="abt-header-text">
                 <div className="abt-header-name">KAI - Wellness Guide</div>
@@ -404,11 +398,7 @@ export default function ChatWidget() {
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           ) : (
-            <img 
-              src="/images/Kai.png" 
-              alt="KAI" 
-              className="abt-kai-face"
-            />
+            <div className="abt-icon-circle">KAI</div>
           )}
         </button>
       </div>
