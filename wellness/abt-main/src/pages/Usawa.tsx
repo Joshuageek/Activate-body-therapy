@@ -177,7 +177,7 @@ const drinksMenu: MenuSection[] = [
     subtitle: "Protein Powder Can Added",
     items: [
       { name: "Kale Kickstart", description: "Powder/ Almond milk/ Coconut Milk", price: "22,000UGX", image: "/images/menu/kale-kickstart.jpg" },
-      { name: "Berry Bliss", description: "Mixed berries/ Banana/ Kale/ Almond Milk or Plain Yogurt", price: "20,000UGX", image: "/images/menu/berry-bliss.jpg" },
+      { name: "Berry Bliss", description: "Mixed berries/ Banana/ Kale/ Almond Milk or Plain Yogurt", price: "20,000UGX", image: "/images/menu/berry-blissberry-bliss.jpg" },
       { name: "Fruit Fusion Smoothie", description: "Mixed berries / Banana / Pineapple / Mango/ Watermelon", price: "18,000UGX", image: "/images/menu/fruit-fusion-smoothie.jpg" },
       { name: "Tropical Smoothie", description: "Mango/ Pineapple/ Banana/ Spinach/ Coconut Milk", price: "18,000UGX", image: "/images/menu/tropical-smoothie.jpg" },
       { name: "Chocolate Berry Smoothie", description: "Dark Chocolate / Mixed Berries / Kale / Banana /Almond Milk", price: "20,000UGX", image: "/images/menu/chocolate-berry-smoothie.jpg" },
@@ -400,7 +400,6 @@ const Usawa = () => {
       </div>
 
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-extrabold leading-tight drop-shadow-2xl">
-        Usawa Cafe
         <br />
         Premium Health & Wellness Dining
       </h1>

@@ -135,9 +135,7 @@ const Index = () => {
     </div>
   {/* Hero Content */}
   <div className="container mx-auto px-4 relative z-10">
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-    <div>
-      {/* Tagline */}
+    <div className="mx-auto max-w-3xl text-center">
       <motion.span
         className="inline-block px-4 py-2 bg-usawa-green/40 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium mb-6 drop-shadow-lg"
         variants={fadeUp}
@@ -148,34 +146,38 @@ const Index = () => {
         Welcome to Activate Body Therapy
       </motion.span>
 
-      {/* Heading */}
-      <motion.h1
-        className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground leading-tight mb-6 drop-shadow-lg"
+      <motion.div
+        className="mx-auto mb-8"
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        Activate Strength. <br />
-        <span className="text-cream text-shadow-sm">Restore Balance.</span>
+        <SearchBar className="max-w-full" />
+      </motion.div>
+
+      <motion.h1
+        className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground leading-tight mb-6 drop-shadow-lg max-w-none"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        Activate Strength. <span className="text-cream">Restore Balance.</span>
       </motion.h1>
 
-      {/* Description */}
       <motion.p
-        className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed drop-shadow-lg"
+        className="mx-auto max-w-4xl text-lg md:text-xl text-primary-foreground/90 mb-10 leading-relaxed drop-shadow-lg"
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        Activate Body Therapy is a wellness and rehabilation center dedicated to transforming life through non-pharmaceutical therapeutic care. We provide personalized therapeutic care that goes beyond physical symptoms, 
-        combining expert neuromuscular therapy with comprehensive wellness solutions to help clients achieve pain relief, 
-        recovery, and total well-being rejuvenation.
+        Activate Body Therapy is a wellness and rehabilitation center dedicated to transforming life through non-pharmaceutical therapeutic care. We provide personalized therapeutic care that goes beyond physical symptoms, combining expert neuromuscular therapy with comprehensive wellness solutions to help clients achieve pain relief, recovery, and total well-being rejuvenation.
       </motion.p>
 
-      {/* Buttons */}
       <motion.div
-        className="flex flex-col sm:flex-row gap-4"
+        className="flex flex-col sm:flex-row justify-center gap-4 mt-8"
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
@@ -193,15 +195,7 @@ const Index = () => {
       </motion.div>
     </div>
   </div>
-</div>
 </section>
-{/* Search Bar */}
-            <div className="mt-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <SearchBar />
-            </div>
-     
-        
-
       {/* ✅ STATS + PARTNERS */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">

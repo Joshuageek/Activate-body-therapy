@@ -537,7 +537,11 @@ export const searchableContent: SearchResult[] = [
   },
 ];
 
-const SearchBar = () => {
+interface SearchBarProps {
+  className?: string;
+}
+
+const SearchBar = ({ className }: SearchBarProps) => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -608,7 +612,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative w-full max-w-xl mx-auto">
+    <div className={cn("relative w-full max-w-xl mx-auto", className)}>
       <div className="relative">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
         <Input
@@ -619,7 +623,7 @@ const SearchBar = () => {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           onFocus={() => query.trim() && setIsOpen(true)}
-          className="pl-12 pr-10 h-12 text-base bg-card/80 backdrop-blur-sm border-usawa-green/50 rounded-full shadow-soft focus:shadow-medium transition-shadow"
+          className="w-full pl-12 pr-10 h-14 text-base text-white placeholder:text-slate-300 bg-white/15 border border-white/20 rounded-full shadow-soft backdrop-blur-xl focus:border-white/40 focus:shadow-medium transition-shadow"
         />
         {query && (
           <button
