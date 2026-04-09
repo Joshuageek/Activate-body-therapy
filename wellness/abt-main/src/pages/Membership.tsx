@@ -59,6 +59,17 @@ const Membership = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Check if Supabase is configured
+    if (!supabase) {
+      toast({
+        title: "Configuration Error",
+        description: "Database not configured. Please contact support.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     const { error } = await supabase
       .from('membership_applications')
       .insert([{
@@ -74,7 +85,7 @@ const Membership = () => {
     if (error) {
       toast({
         title: "Something went wrong",
-        description: "Please try again or contact us directly.",
+        description: error.message || "Please try again or contact us directly.",
         variant: "destructive",
       });
     } else {
