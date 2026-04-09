@@ -18,6 +18,7 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/lib/supabase";
 
 const membershipOptions = [
   { id: "fitness", title: "Fitness Package",  },
@@ -58,24 +59,40 @@ const Membership = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const { error } = await supabase
+      .from('membership_applications')
+      .insert([{
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        membership_type: formData.membershipType,
+        duration: formData.duration,
+        notes: formData.message,
+      }]);
 
-    toast({
-      title: "Application Submitted!",
-      description:
-        "Thank you for your interest. Our team will contact you shortly.",
-    });
+    if (error) {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Application Submitted!",
+        description: "Thank you for your interest. Our team will contact you shortly.",
+      });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        membershipType: "",
+        duration: "",
+        message: "",
+      });
+    }
 
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      membershipType: "",
-      duration: "",
-      message: "",
-    });
     setIsSubmitting(false);
   };
 
