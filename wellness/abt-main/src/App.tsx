@@ -15,6 +15,9 @@ import Usawa from "./pages/Usawa";
 import Clinic from "./pages/Clinic";
 import HealthClub from "./pages/Health-club";
 import Membership from "./pages/Membership";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +39,12 @@ const App = () => (
           <Route path="/clinic" element={<Clinic />} />  
           <Route path="/health-club" element={<HealthClub />} />
           <Route path="/membership" element={<Membership />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          } />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
