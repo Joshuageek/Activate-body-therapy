@@ -44,8 +44,7 @@ const AdminDashboard = () => {
     
     const { data, error } = await supabase
       .from("membership_applications")
-      .select("*")
-      .order("created_at", { ascending: false });
+      .select("*");
     
     if (error) {
       console.error("Error fetching applications:", error.message);
