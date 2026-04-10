@@ -36,21 +36,45 @@ const AdminDashboard = () => {
   }, []);
 
   const fetchApplications = async () => {
+    if (!supabase) {
+      console.error("Supabase not configured");
+      setLoading(false);
+      return;
+    }
+    
     const { data, error } = await supabase
       .from("membership_applications")
       .select("*")
       .order("created_at", { ascending: false });
-    if (!error && data) setApplications(data);
+    
+    if (error) {
+      console.error("Error fetching applications:", error.message);
+    } else if (data) {
+      setApplications(data);
+    }
+    
     setLoading(false);
   };
 
   const updateStatus = async (id: string, status: string) => {
-    await supabase.from("membership_applications").update({ status }).eq("id", id);
-    setApplications(prev => prev.map(a => a.id === id ? { ...a, status } : a));
+    if (!supabase) return;
+    
+    const { error } = await supabase
+      .from("membership_applications")
+      .update({ status })
+      .eq("id", id);
+    
+    if (error) {
+      console.error("Error updating status:", error.message);
+    } else {
+      setApplications(prev => prev.map(a => a.id === id ? { ...a, status } : a));
+    }
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
+    if (supabase) {
+      await supabase.auth.signOut();
+    }
     navigate("/admin/login");
   };
 
