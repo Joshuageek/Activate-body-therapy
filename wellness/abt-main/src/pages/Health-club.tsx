@@ -119,56 +119,23 @@ const healthClubServices = [
 ];
 
 
-/* ================= MEMBERSHIPS ================= */
-const memberships = [
-  {
-    id: 1,
-    title: "Fitness Package",
-    featured: false,
-    features: ["Full Gym Access", "1 Relaxation OR IV Treatment", "10 PT sessions per month", "Unlimited Sauna & Steam", "Swimming Pool Access"],
-  },
-  {
-    id: 3,
-    title: "Corporate Membership(2 Adults upto 2 Kids)",
-    
-    featured: false,
-    features: ["Corporate Wellness Access", "Relaxation Treatments", "IV Therapy", "Sauna & Steam", "Swimming Pool"],
-  },
-  {
-    id: 4,
-    title: "Family Membership",
-    
-    featured: false,
-    features: ["Full Gym Access", "1 Relaxation Treatment", "1 IV Treatment", "Unlimited Steam Room & Sauna Access", "UnlimitedSwimming Pool"],
-  },
-  {
-    id: 5,
-    title: "Wellness Membership",
-    featured: false,
-    features: ["Full Gym Access", "1 Hydration IV Treat after Consultation", "4 Beauty or Body Treatments", "Unlimited Steam Room & Sauna Access", "Unlimited Swimming Pool"],
-  },
-  {
-    id: 6,
-    title: "Club Membership",
-    
-    featured: false,
-    features: ["Full Gym Access", "1 Relaxation Treatment or IV Treatment", "4 Beauty or Body Treatments", "1 Group Class Excluding Yoga", "Unlimited Steam & Sauna Room Pool","Unlimited Swimming Pool"],
-  },
-  {
-    id: 7,
-    title: "IV Membership",
-    
-    featured: false,
-    features: ["4 IV Hydration Treatments after consultation", "Beauty Package Products", "1 Beauty or Body Treatments", "Unlimited Steam & Sauna Room Pool","Unlimited Swimming Pool"],
-  },
-];
+// Import the membershipOptions from Membership page for consistency
+import { membershipOptions as importedMembershipOptions } from "./Membership";
+
+const memberships = importedMembershipOptions.map((option, idx) => ({
+  id: idx + 1,
+  title: option.title,
+  featured: false,
+  features: option.details.split(", "),
+  prices: option.prices,
+}));
 
 /* ================= MODAL ================= */
 const MembershipModal = ({ open, onClose }: { open: boolean; onClose: () => void }) => (
   <AnimatePresence>
     {open && (
       <motion.div
-        className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center px-4"
+        className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -180,25 +147,24 @@ const MembershipModal = ({ open, onClose }: { open: boolean; onClose: () => void
           exit={{ y: 30, opacity: 0, scale: 0.95 }}
           transition={{ type: "spring", stiffness: 260, damping: 22 }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-background rounded-3xl p-8 max-w-5xl w-full max-h-[90vh] overflow-y-auto"
+          className="bg-white rounded-3xl p-8 max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-border"
         >
           <div className="text-center mb-10">
-            <h2 className="font-serif text-3xl font-bold text-usawa-green">Membership Packages</h2>
-            <p className="text-muted-foreground">Choose the package that fits your wellness goals</p>
+            <h2 className="font-serif text-4xl font-bold text-usawa-green tracking-tight">Membership Packages</h2>
+            <p className="text-muted-foreground text-lg">Choose the package that fits your wellness goals</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {memberships.map((m) => (
               <div
                 key={m.id}
-                className={`rounded-2xl p-6 border shadow-soft ${
+                className={`rounded-2xl p-7 border flex flex-col h-full bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 ${
                   m.featured ? "border-usawa-green ring-2 ring-usawa-green/20" : "border-border"
                 }`}
               >
                 <div className="mb-4">
-                  <h3 className="font-serif text-lg font-semibold text-usawa-green">{m.title}</h3>
+                  <h3 className="font-serif text-xl font-bold text-usawa-green tracking-tight">{m.title}</h3>
                 </div>
-
                 <ul className="space-y-2 mb-6">
                   {m.features.map((f, i) => (
                     <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -207,10 +173,19 @@ const MembershipModal = ({ open, onClose }: { open: boolean; onClose: () => void
                     </li>
                   ))}
                 </ul>
-
-                <Button asChild className="w-full bg-usawa-green text-white">
-                  <Link to="/membership">Join Now</Link>
-                </Button>
+                <div className="mb-4">
+                  <div className="font-semibold text-usawa-green text-base">Pricing:</div>
+                  <ul className="mt-2 space-y-1 text-sm">
+                    <li><span className="font-medium">Quarterly:</span> {m.prices.quarterly}</li>
+                    <li><span className="font-medium">Bi-Annual:</span> {m.prices.biannual}</li>
+                    <li><span className="font-medium">Annual:</span> {m.prices.annual}</li>
+                  </ul>
+                </div>
+                <div className="mt-auto">
+                  <Button asChild className="w-full bg-usawa-green text-white text-lg font-semibold py-3 rounded-xl shadow hover:bg-usawa-green/90 transition-colors">
+                    <Link to="/membership">Join Now</Link>
+                  </Button>
+                </div>
               </div>
             ))}
           </div>

@@ -20,12 +20,67 @@ import {
 import { Link } from "react-router-dom";
 import { supabase } from "@/lib/supabase";
 
-const membershipOptions = [
-  { id: "fitness", title: "Fitness Package",  },
-  { id: "club", title: "Club Membership",  },
-  { id: "corporate", title: "Corporate Membership",  },
-  { id: "family", title: "Family Package", },
-  { id: "wellness", title: "Wellness Package",  },
+export const membershipOptions = [
+  {
+    id: "Diamond ",
+    title: "Diamond Membership",
+    details: "Full Gym Access, 12 Week Nutritional Plan, 8 Customised Personal Training Sessions, Monthly Progress Assessment,  4 Relaxation Treatments, Unlimited Group Classes including Yoga, Unlimited Steam Room and Sauna Access, Unlimited Swimming Pool Access",
+    prices: {
+      quarterly: "UGX 4,200,000",
+      biannual: "UGX  8,000,000",
+      annual: "UGX  14,000,000"
+    }
+  },
+  {
+    id: "fitness",
+    title: "Fitness Package",
+    details: "Full Gym Access, 10 Personal Training sessions, Head & Shoulder OR 1 PNF Session, Unlimited steam and sauna access",
+    prices: {
+      quarterly: "UGX  3,000,000",
+      biannual: "UGX  6,000,000",
+      annual: "UGX  12,000,000"
+    }
+  },
+  {
+    id: "club",
+    title: "Club Membership",
+    details: "Full Gym Access, 1 Relaxation Treatment, 1 Group Classes including Yoga, Unlimited Steam Room and Sauna Access, Unlimited Swimming Pool Accesss",
+    prices: {
+      quarterly: "UGX 2,190,000",
+      biannual: "UGX 4,000,00",
+      annual: "UGX 7,900,000"
+    }
+  },
+  {
+    id: "corporate",
+    title: "Corporate Membership - Minimum Group",
+    details: "Full Gym Access, 1 Relaxation Treatment, 1 Group Class excluding Yoga, Minimum group 5, Unlimited Steam Room and Sauna Access, Unlimited Swimming Pool Accesss",
+    prices: {
+      quarterly: "UGX  1,750,000",
+      biannual: "UGX  3,800,000",
+      annual: "UGX  6,600,000"
+    }
+  },
+  {
+    id: "family",
+    title: "FAMILY(2 ADULTS/UPTO 2 CHILDREN UNDER 15)",
+    details: "Full Gym Access, 1 Relaxation Treatment, 1 Group Classes per month including Yoga, Unlimited Steam Room and Sauna Access, Unlimited Swimming Pool Accesss, Friends and Family",
+    prices: {
+      quarterly: "UGX 5,800,000",
+      biannual: "UGX 10,000,000",
+      annual: "UGX 17,500,000"
+    }
+  },
+  {
+    id: "iv",
+    title: "IV Package",
+    details: "4 IV Hydration Treatments after consultation, Beauty Package Products, 1 Beauty or Body Treatments, Unlimited Steam & Sauna Room Pool, Unlimited Swimming Pool",
+    prices: {
+      quarterly: "UGX 5,800,000",
+      biannual: "UGX 10,000,000",
+      annual: "UGX 17,500,000"
+    }
+  },
 ];
 
 const durationOptions = [
@@ -47,6 +102,7 @@ const Membership = () => {
     duration: "",
     message: "",
   });
+  const [selectedMembership, setSelectedMembership] = useState<null | (typeof membershipOptions)[0]>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -228,16 +284,50 @@ const Membership = () => {
                         <Label
                           htmlFor={option.id}
                           className="flex flex-col items-center justify-center p-6 rounded-xl border-2 border-border bg-background cursor-pointer transition-all hover:border-usawa-green/50 peer-data-[state=checked]:border-usawa-green peer-data-[state=checked]:bg-usawa-green/5"
+                          onClick={() => setSelectedMembership(option)}
                         >
-                          
                           <span className="font-medium text-foreground text-center">
                             {option.title}
                           </span>
+                          <span className="text-xs text-muted-foreground mt-2">Click for details</span>
                         </Label>
                       </div>
                     ))}
                   </RadioGroup>
                 </div>
+                {/* Membership Details Modal */}
+                {selectedMembership && (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+                    <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-8 relative animate-fade-in">
+                      <button
+                        className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl font-bold"
+                        onClick={() => setSelectedMembership(null)}
+                        aria-label="Close"
+                      >
+                        &times;
+                      </button>
+                      <h3 className="text-2xl font-bold mb-2 text-usawa-green">{selectedMembership.title}</h3>
+                      <p className="mb-4 text-gray-700">{selectedMembership.details}</p>
+                      <div className="mb-4">
+                        <div className="font-semibold text-usawa-green">Pricing:</div>
+                        <ul className="mt-2 space-y-1">
+                          <li><span className="font-medium">Quarterly:</span> {selectedMembership.prices.quarterly}</li>
+                          <li><span className="font-medium">Bi-Annual:</span> {selectedMembership.prices.biannual}</li>
+                          <li><span className="font-medium">Annual:</span> {selectedMembership.prices.annual}</li>
+                        </ul>
+                      </div>
+                      <Button
+                        className="w-full mt-4"
+                        onClick={() => {
+                          setFormData((prev) => ({ ...prev, membershipType: selectedMembership.id }));
+                          setSelectedMembership(null);
+                        }}
+                      >
+                        Choose This Membership
+                      </Button>
+                    </div>
+                  </div>
+                )}
 
                 {/* Duration Selection */}
                 <div>

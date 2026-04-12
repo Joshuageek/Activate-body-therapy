@@ -20,9 +20,15 @@ import emailjs from '@emailjs/browser';
 const contactInfo = [
   {
     icon: Phone,
-    title: "Phone",
-    details: "+256 708-661-166 | +256 708 421 449",
-    link: "tel:+256 708-661-166 | tel:+256 708 421 449",
+    title: "Clinic Phone",
+    details: "+256 708-661-166 ",
+    link: "tel:+256 708-661-166 ",
+  },
+  {
+    icon: Phone,
+    title: "Health Club Phone",
+    details: "+256 708 421 449",
+    link: "tel:+256 708 421 449",
   },
   {
     icon: Mail,
@@ -32,14 +38,26 @@ const contactInfo = [
   },
   {
     icon: MapPin,
-    title: "Location",
-    details: "Plot 12, Kyadondo Road, Nakasero Uganda | Plot 5 Naguru Hill East Rd, The Summit Residences, Kampala Uganda",
-    link: "https://www.google.com/maps?q=0.3304547,32.5792869&z=17&hl=en",
+    title: "Clinic Location",
+    details: "Plot 12, Kyadondo Road, Nakasero Uganda",
+    link: "",
+  },
+  {
+    icon: MapPin,
+    title: "Health Club Location",
+    details: "Plot 5 Naguru Hill East Rd, The Summit Residences, Kampala Uganda",
+    link: "",
   },
   {
     icon: Clock,
-    title: "Hours",
-    details: "Mon-Sat: 8AM-8PM | Sun: 10AM-6PM",
+    title: "Clinic Working Hours",
+    details: "Mon-Sun: 8AM-8PM",
+    link: "#",
+  },
+  {
+    icon: Clock,
+    title: "Health Club Working Hours",
+    details: "Mon-Sun: 6AM-10PM",
     link: "#",
   },
 ];
@@ -49,6 +67,19 @@ const serviceOptions = [
   ...servicesData.flatMap((service) => service.treatments?.map((t) => t.title) ?? []),
   "Other",
 ];
+
+
+// Helper: Map service title to location(s)
+const getServiceLocations = (serviceTitle) => {
+  const service = servicesData.find(s => s.title === serviceTitle);
+  if (!service) return [];
+  if (!service.section) return [];
+  const section = service.section.toLowerCase();
+  if (section.includes("clinical") && section.includes("health")) return ["clinic", "health club"];
+  if (section.includes("clinical")) return ["clinic"];
+  if (section.includes("health")) return ["health club"];
+  return [];
+};
 
 const Contact = () => {
   const { toast } = useToast();
@@ -62,6 +93,7 @@ const Contact = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [locationLocked, setLocationLocked] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -140,6 +172,19 @@ const Contact = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // When service changes, auto-set location if only one location is available
+  const handleServiceChange = (value) => {
+    setFormData((prev) => ({ ...prev, service: value }));
+    const locations = getServiceLocations(value);
+    if (locations.length === 1) {
+      setFormData((prev) => ({ ...prev, location: locations[0] }));
+      setLocationLocked(true);
+    } else {
+      setFormData((prev) => ({ ...prev, location: "" }));
+      setLocationLocked(false);
+    }
   };
 
   return (
@@ -314,9 +359,7 @@ const Contact = () => {
                     <Label htmlFor="service">Service of Interest</Label>
                     <Select
                       value={formData.service}
-                      onValueChange={(value) =>
-                        setFormData((prev) => ({ ...prev, service: value }))
-                      }
+                      onValueChange={handleServiceChange}
                     >
                       <SelectTrigger className="h-12">
                         <SelectValue placeholder="Select a service" />
@@ -335,12 +378,11 @@ const Contact = () => {
                     <Label htmlFor="location">Choose Location *</Label>
                     <Select
                       value={formData.location}
-                      onValueChange={(value) =>
-                        setFormData((prev) => ({ ...prev, location: value }))
-                      }
+                      onValueChange={(value) => setFormData((prev) => ({ ...prev, location: value }))}
                       required
+                      disabled={locationLocked}
                     >
-                      <SelectTrigger className="h-12">
+                      <SelectTrigger className="h-12" disabled={locationLocked}>
                         <SelectValue placeholder="Select clinic or health club" />
                       </SelectTrigger>
                       <SelectContent>
