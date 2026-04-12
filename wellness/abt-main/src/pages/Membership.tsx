@@ -145,6 +145,19 @@ const Membership = () => {
         variant: "destructive",
       });
     } else {
+      // WhatsApp Health Club number
+      const healthClubNumber = "256708421449";
+      const message =
+        `Membership Application:\n` +
+        `Name: ${formData.firstName} ${formData.lastName}\n` +
+        `Email: ${formData.email}\n` +
+        `Phone: ${formData.phone}\n` +
+        `Membership Type: ${formData.membershipType}\n` +
+        `Duration: ${formData.duration}\n` +
+        `Message: ${formData.message}`;
+      const whatsappUrl = `https://wa.me/${healthClubNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank");
+
       toast({
         title: "Application Submitted!",
         description: "Thank you for your interest. Our team will contact you shortly.",
