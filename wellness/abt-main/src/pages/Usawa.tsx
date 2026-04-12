@@ -357,7 +357,9 @@ const Usawa = () => {
       .map((item) => `${item.name} x${item.quantity} - ${item.price}`)
       .join("\n");
 
-    const whatsappURL = `https://wa.me/<YOUR_PHONE_NUMBER>?text=${encodeURIComponent(
+    // Usawa WhatsApp number
+    const usawaNumber = "256763783078";
+    const whatsappURL = `https://wa.me/${usawaNumber}?text=${encodeURIComponent(
       "Hello! I'd like to place an order:\n" + message
     )}`;
 
