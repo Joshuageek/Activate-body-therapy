@@ -32,7 +32,7 @@ const routeMeta: Record<string, {
 }> = {
   "/": {
     title: "Activate Body Therapy",
-    description: "Activate Body Therapy offers professional physiotherapy, pain management, sports rehabilitation, IV therapy, and holistic wellness services tailored to your recovery and performance needs.",
+    description: "Professional physiotherapy, pain relief, and holistic wellness treatments designed for recovery and performance.",
     url: "https://activatebodytherapy.com/",
     image: "https://activatebodytherapy.com/logo.png",
   },
