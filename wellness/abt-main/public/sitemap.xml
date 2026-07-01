@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://activatebodytherapy.com/</loc>
+    <loc>https://www.activatebodytherapy.com/</loc>
     <priority>1.00</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://activatebodytherapy.com/services</loc>
+    <loc>https://www.activatebodytherapy.com/clinic</loc>
     <priority>0.90</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://activatebodytherapy.com/clinic</loc>
+    <loc>https://www.activatebodytherapy.com/services</loc>
     <priority>0.90</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://activatebodytherapy.com/health-club</loc>
+    <loc>https://www.activatebodytherapy.com/health-club</loc>
     <priority>0.90</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://activatebodytherapy.com/membership</loc>
-    <priority>0.80</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://activatebodytherapy.com/about</loc>
-    <priority>0.80</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://activatebodytherapy.com/contact</loc>
-    <priority>0.80</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://activatebodytherapy.com/blog</loc>
+    <loc>https://www.activatebodytherapy.com/usawa</loc>
     <priority>0.80</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://activatebodytherapy.com/products</loc>
+    <loc>https://www.activatebodytherapy.com/membership</loc>
     <priority>0.80</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://activatebodytherapy.com/usawa</loc>
+    <loc>https://www.activatebodytherapy.com/about</loc>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.activatebodytherapy.com/contact</loc>
+    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.activatebodytherapy.com/blog</loc>
+    <priority>0.80</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.activatebodytherapy.com/products</loc>
     <priority>0.80</priority>
     <changefreq>monthly</changefreq>
   </url>
