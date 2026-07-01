@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import {ArrowRight,Star,Users,Award,Heart,Activity,HeartPulse,BicepsFlexed,Infinity,} from "lucide-react";
 import therapySession from "/therapy-session1.jpg";
@@ -113,6 +114,17 @@ const fadeUp = {
 const Index = () => {
   return (
     <Layout>
+      <Helmet>
+        <title>Activate Body Therapy | Physiotherapy & Wellness Clinic in Kampala</title>
+        <meta name="description" content="Kampala's leading physiotherapy and wellness clinic. Expert treatment for back pain, sports injuries, neuromuscular therapy, chiropractic, IV therapy and holistic wellness. Book today." />
+        <meta name="keywords" content="physiotherapy Kampala, back pain treatment Kampala, sports injury rehab Kampala, wellness clinic Kampala, neuromuscular therapy Kampala, chiropractic Kampala, IV therapy Kampala" />
+        <link rel="canonical" href="https://activatebodytherapy.com" />
+        <meta property="og:title" content="Activate Body Therapy | Physiotherapy & Wellness Clinic in Kampala" />
+        <meta property="og:description" content="Kampala's leading physiotherapy and wellness clinic. Back pain, sports injuries, rehabilitation and holistic wellness." />
+        <meta property="og:url" content="https://activatebodytherapy.com" />
+      </Helmet>
+
+      {/* Hero Section For Home (Video Background) */}
       {/* Hero Section For Home (Video Background) */}
 <section className="relative min-h-[90vh] flex items-center overflow-hidden">
   {/* Video Background */}

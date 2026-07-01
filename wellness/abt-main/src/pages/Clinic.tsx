@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -166,6 +167,16 @@ const getServiceAnchor = (title: string) => {
 const Clinic = () => {
   return (
     <Layout>
+       <Helmet>
+        <title>Physiotherapy Clinic in Kampala | Activate Body Therapy</title>
+        <meta name="description" content="Expert physiotherapy clinic in Kampala offering back pain treatment, sports injury rehab, neuromuscular therapy, chiropractic, dry needling, IV therapy and more. Book today." />
+        <meta name="keywords" content="physiotherapy clinic Kampala, back pain treatment Kampala, sports injury rehab Kampala, neuromuscular therapy Kampala, chiropractic Kampala, dry needling Kampala" />
+        <link rel="canonical" href="https://activatebodytherapy.com/clinic" />
+        <meta property="og:title" content="Physiotherapy Clinic in Kampala | Activate Body Therapy" />
+        <meta property="og:description" content="Expert physiotherapy clinic in Kampala. Back pain, sports injuries, rehabilitation and holistic wellness treatments." />
+        <meta property="og:url" content="https://activatebodytherapy.com/clinic" />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div
@@ -185,7 +196,7 @@ const Clinic = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <span className="inline-block px-4 py-2  text-warm-gray rounded-full text-sm font-medium mb-6">
-              
+              Welcome to Activate Body Therapy
             </span>
 
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import Layout from "@/components/layout/Layout";
 import { toast } from "@/hooks/use-toast";
 import { Plus, ShoppingCart, X, Trash2, Check } from "lucide-react";
@@ -368,6 +369,15 @@ const Usawa = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Usawa | Healthy Café & Wellness Dining in Kampala</title>
+        <meta name="description" content="Usawa by Activate Body Therapy — Kampala's healthy café serving nutritious meals, smoothies, wellness bowls, fresh juices and meal plans in a premium wellness setting." />
+        <meta name="keywords" content="healthy café Kampala, healthy food Kampala, meal plans Kampala, healthy eating Kampala, smoothies Kampala, wellness dining Kampala, nutrition Kampala" />
+        <link rel="canonical" href="https://activatebodytherapy.com/usawa" />
+        <meta property="og:title" content="Usawa | Healthy Café & Wellness Dining in Kampala" />
+        <meta property="og:description" content="Kampala's healthy café. Nutritious meals, smoothies, wellness bowls and fresh juices at Usawa by Activate Body Therapy." />
+        <meta property="og:url" content="https://activatebodytherapy.com/usawa" />
+      </Helmet>
 
   {/* Hero Section */}
       <section className="relative py-28 md:py-36 overflow-hidden">

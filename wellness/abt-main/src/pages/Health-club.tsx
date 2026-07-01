@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -201,6 +202,15 @@ const HealthClub = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Health Club in Kampala | Activate Body Therapy</title>
+        <meta name="description" content="Kampala's premier health club — personal training, spa & recovery treatments, fitness classes, IV treatments and nutrition support at Activate Body Therapy Health Club." />
+        <meta name="keywords" content="health club Kampala, gym Kampala, personal training Kampala, spa Kampala, fitness classes Kampala, wellness club Kampala, IV treatments Kampala" />
+        <link rel="canonical" href="https://activatebodytherapy.com/health-club" />
+        <meta property="og:title" content="Health Club in Kampala | Activate Body Therapy" />
+        <meta property="og:description" content="Kampala's premier health club. Personal training, spa treatments, fitness classes and nutrition support." />
+        <meta property="og:url" content="https://activatebodytherapy.com/health-club" />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div

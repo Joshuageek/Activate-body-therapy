@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {Helmet} from "react-helmet-async";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Check } from "lucide-react";
@@ -453,6 +454,15 @@ const Services = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Physiotherapy & Wellness Services in Kampala | Activate Body Therapy</title>
+        <meta name="description" content="Full range of physiotherapy and wellness services in Kampala — sports therapy, neuromuscular therapy, chiropractic, IV therapy, massage, facials and more at Activate Body Therapy." />
+        <meta name="keywords" content="physiotherapy services Kampala, sports therapy Kampala, neuromuscular therapy Kampala, IV therapy Kampala, massage Kampala, chiropractic Kampala, dry needling Kampala, wellness clinic Kampala" />
+        <link rel="canonical" href="https://activatebodytherapy.com/services" />
+        <meta property="og:title" content="Physiotherapy & Wellness Services in Kampala | Activate Body Therapy" />
+        <meta property="og:description" content="Full range of physiotherapy and wellness services in Kampala. Sports therapy, IV therapy, massage, chiropractic and more." />
+        <meta property="og:url" content="https://activatebodytherapy.com/services" />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative py-32 md:py-48 overflow-hidden">
         {/* Background Image with Overlay */}

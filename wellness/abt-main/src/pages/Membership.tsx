@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -178,6 +179,15 @@ const Membership = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Activate Body Therapy | Physiotherapy & Wellness Clinic in Kampala</title>
+        <meta name="description" content="Kampala's leading physiotherapy and wellness clinic. Expert treatment for back pain, sports injuries, neuromuscular therapy, chiropractic, IV therapy and holistic wellness. Book today." />
+        <meta name="keywords" content="physiotherapy Kampala, back pain treatment Kampala, sports injury rehab Kampala, wellness clinic Kampala, neuromuscular therapy Kampala, chiropractic Kampala, IV therapy Kampala" />
+        <link rel="canonical" href="https://activatebodytherapy.com" />
+        <meta property="og:title" content="Activate Body Therapy | Physiotherapy & Wellness Clinic in Kampala" />
+        <meta property="og:description" content="Kampala's leading physiotherapy and wellness clinic. Back pain, sports injuries, rehabilitation and holistic wellness." />
+        <meta property="og:url" content="https://activatebodytherapy.com" />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-usawa-green via-usawa-green/90 to-usawa-green/80">
         <div className="container mx-auto px-4">
